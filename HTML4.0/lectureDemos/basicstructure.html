@@ -1,0 +1,179 @@
+<html>
+
+<head>
+	<title>React G6</title>
+</head>
+
+<body>
+	<!-- what you want to display on page -->
+	<!-- dealing with text [headings , p , physical styles , lists , nested lists , pre , font , character entities]-->
+	<!-- h1 to h6 [block elements ,bold , with font size differ default font size for browser ]-->
+	<h1 align="center">Dealing With Headings </h1>
+	<p>test p </p>
+	<hr color="red" width="50%" size="5" />
+	<!-- html nature , not keep more than one space , not keep new lines -->
+	ITI <br /> Mansoura<br />
+	<pre>
+			TEST
+			TEST
+		</pre>
+	<hr color="red" width="50%" size="5" />
+
+	<h4 align="center">Character entities : &charaterentityname;</h4>
+	<p> copyrights &copy; , &reg; reserved to iti mansoura </p>
+	<!--<h6>Test headings</h6>-->
+	<hr color="red" width="50%" size="5" />
+	<a name="top_mansoura" />
+	<p>ITI <font color="red" size="6" face="tahoma">Mansoura</font> Branch </p>
+	<p>ITI Mansoura <b><i><s><u>Summer</u></s></i></b> Training , H<sub>2</sub>O , X<sup>3</sup></p>
+	<hr color="red" width="50%" size="5" />
+	<h4>Lists : ol , ul , dl</h4>
+	<ol type="A" start="4">
+		<li>Home</li>
+		<li>Contact</li>
+		<li>About</li>
+	</ol>
+	<ul type="square">
+		<li>Home</li>
+		<li>Contact</li>
+		<li>About</li>
+	</ul>
+	<dl>
+		<dt>HTML</dt>
+		<dd>Hyper text Markup Language</dd>
+		<dt>XML</dt>
+		<dd>Extensible Markup Language</dd>
+	</dl>
+	<hr />
+	<h4>Nested lists</h4>
+	<ol>
+		<li>Day One
+			<ul type="disc">
+				<li>text</li>
+				<li>Images</li>
+				<li>Tables</li>
+			</ul>
+		</li>
+		<li>Day Two</li>
+		<li>Day Three</li>
+	</ol>
+	<!-- images -->
+	<!-- img tag src, , width , height , border , align [left , right , top , middle , bottom ] , hspace , vspace , usemap-->
+	<!--<img src="testimg.png" border="2" width="200" height="200" title="image one" alt="training"/>
+		<img src="testimg.png" border="2" width="200" height="200" hspace="50"/>-->
+	<img src="testimg.png" usemap="#imgmap" />
+	<map name="imgmap">
+		<area shape="circle" coords="55,109,20" href="http://www.google.com" title="gogole" />
+	</map>
+
+	<!-- links  , external , internal , namedanchor , mailto link [self study]-->
+	<!-- external links[]you have to write full url for destination  :  visit external resource (not one of website resources) -->
+	<br />
+	<a href="http://www.google.com" target="_blank">Visit Google</a>
+	<br />
+	<a href="test/contact.html">Open Conatct</a>
+	<a href="#top_mansoura">Top Mansoura</a>
+	<!-- tables -->
+	<!--<table align , width , height , cellspacing , cellpadding , border , border color , bgcolor , background  , tr [th , td]>-->
+	<hr />
+	<table border="2" align="center" width="300" height="300" cellspacing="10" cellpadding="10">
+		<tr>
+			<th>Serial</th>
+			<th>Name</th>
+			<th>Mobile</th>
+		</tr>
+		<tr>
+			<td>1000</td>
+			<td>Ali</td>
+			<td>948474747</td>
+		</tr>
+		<tr>
+			<td rowspan="2">2000</td>
+			<td rowspan="2">Ahmed</td>
+			<td>948435347</td>
+		</tr>
+		<tr>
+
+
+			<td>895685</td>
+		</tr>
+
+		<tr>
+			<td>3000</td>
+			<td>Mohamed</td>
+			<td>945332</td>
+		</tr>
+		<tr>
+			<th colspan="3">ITI Mansoura</th>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<table border="2" bgcolor="lightyellow">
+					<tr>
+						<th>Crs#</th>
+						<th>CrsName</th>
+						<th>CrsDegree</th>
+						<th>CrsEval</th>
+						<th>CrsInst</th>
+					</tr>
+					<tr>
+						<th>10</th>
+						<th>html</th>
+						<th>100</th>
+						<th>60</th>
+						<th>ahmed</th>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<!-- dealing with forms -->
+	<pre>
+
+<hr/>
+<form action="test/contact.html">
+	<input type="text" name="user_name"/><br/>
+	<input type="password" name="user_pass"/>
+	<input type="submit" value="login"/>
+	<input type="reset" value="cancel"/>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Reg form</title>
+	</head>
+	<body>
+		<form action="test/contact.html">
+			<table width="600" cellpadding="10" cellspacing="10" border="2" align="center">
+				<tr>
+					<th colspan="2">Registeration Form</th>
+				</tr>
+				<tr>
+					<td>UserName</td>
+					<td><input type="text" name="user_name" size="60"/></td>
+				</tr>
+<tr>
+					<td>UserPass</td>
+					<td><input type="password" name="user_pass" size="60"/></td>
+				</tr>
+				<tr>
+					<td rowspan="2">Gender</td>
+					<td><input type="radio" name="gender" value="M"/> Male</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="gender" value="F"/> Female</td>
+				</tr>
+				<tr>
+					<td>Courses</td>
+					<td>
+						<select multiple name="courses">
+						<option value="html">Hyper Text Markup Language</option>
+			<option value="xml">Extensible Markup Language</option>
+			<option value="css">cascading Style Sheet</option>
+			<option value="sql">Structured Query language</option>
+			<option value="bs">Bootstrap</option>
+			<option value="jq">JavaScript Query</option>
+						</select>
+					</td>
+				</tr>
+			<tr>
+				<th colspan="2">Interests</th>
+			</tr>
+			<tr>	
+				<td colspan="2">
+					<table align="center" border="1" width="100%">
+					<tr>
+						<td><input type="checkbox" name="intersets" value="football"/></td>
+<td>FootBall</td>
+<td><input type="checkbox" name="intersets" value="running"/></td>
+<td>Running</td>
+<td><input type="checkbox" name="intersets" value="swimming"/></td>
+<td>swimming</td>
+					</tr>	
+
+<tr>
+						<td><input type="checkbox" name="intersets" value="coding"/></td>
+<td>Coding</td>
+<td><input type="checkbox" name="intersets" value="design"/></td>
+<td>Design</td>
+<td><input type="checkbox" name="intersets" value="reading"/></td>
+<td>Reading</td>
+					</tr>				
+					</table>
+				</td>
+			</tr>
+<tr>
+		<td>CV</td>
+		<td><input type="file" name="cv"/></td>
+</tr>
+			<tr>
+				<th colspan="2">Comments</th>
+			</tr>
+			<tr>	
+				<td colspan="2" align="center">
+					<textarea cols="60" rows="7" name="usercomments"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="register"/></td>
+				<td><input type="reset" value="cancel"/></td>
+			</tr>
+			</table>
+		</form>
+	</body>
+</html>
