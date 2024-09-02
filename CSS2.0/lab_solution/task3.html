@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <title>Task Three</title>
+    <style>
+        .contaner {
+            width: 350px;
+            padding: 20px;
+            border: 3px solid gray;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .buttons {
+            text-align: center;
+        }
+
+        .buttons>div {
+            display: inline;
+        }
+
+        .facebook img,
+        .twitter img {
+            width: 15px;
+        }
+
+        .facebook {
+            background-color: blue;
+            padding: 10px;
+            margin: auto;
+            color: white;
+        }
+
+        .twitter {
+            margin-left: 20px;
+            background-color: rgb(23, 233, 233);
+            padding: 10px;
+            color: white;
+        }
+
+        input {
+            margin: auto;
+        }
+
+        h3 {
+            text-align: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: gray;
+            margin: 30px auto
+        }
+
+        #username,
+        #password {
+            border: 3px solid gray;
+            width: 100%;
+            margin: 20px auto;
+            padding: 5px 10px;
+        }
+       
+
+        .keep label {
+            color: gray;
+            display: inline;
+            margin-right: 80px;
+
+        }
+
+        button {
+            display: inline-block;
+            width: 100%;
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .member {
+            text-align: center;
+            color: gray;
+        }
+
+        .member span {
+            color: cyan;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contaner">
+        <div class="buttons">
+            <div class="facebook">
+                <img src="./Assets/facebook-logo.png" alt="facebook">
+                Log In to Facebook
+            </div>
+            <div class="twitter">
+                <img src="./Assets/twitter.png" alt="Twitter">
+                Log In to Twitter
+            </div>
+        </div>
+        <h3>Or</h3>
+
+        <input type="text" name="username" id="username" placeholder="User Name">
+        <input type="password" name="password" id="password" placeholder="**********">
+        <div class="keep">
+            <input type="checkbox" name="keep" id="keep">
+            <label>Keep me sign in</label>
+            <span>Forgot your password</span>
+        </div>
+        <button>Login</button>
+        <p class="member">not a member? <span>sign in now</span></p>
+    </div>
+</body>
+
+</html>

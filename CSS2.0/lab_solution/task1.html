@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>First Task</title>
+        <style>
+            a, h1, h2, p, ul, li, span {
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            body {
+                background-image: url(./Assets/pinkBackground.png);
+                background-repeat: repeat;
+                background-attachment: fixed;
+                text-align: center;
+            }
+            div.contaner {
+                width: 600px;
+                text-align: center;
+                border: 10px groove black;
+                margin: 30px auto;
+                background-color: white;
+            }
+
+            div.top, div.mid, .bottom {
+                background-color: lightpink;
+                padding: 0px;
+                border: 5px solid gray;
+                margin: 30px;
+                
+            }
+
+            div.contaner  img {
+                width: 60px;
+                height: 60px;
+                display: inline-block;
+                margin-top: 10px;
+            }
+
+            div.top span {
+                font-size: 30px;
+                font-weight: bold;
+                display: inline-block;
+                margin: 0 20px;
+            }
+
+            .mid {
+                border: 5px solid gray;
+                background-color: lightpink;
+            }
+
+            .mid span a{
+                font-size: 15px;
+                display: inline-block;
+                margin: 10px;
+                color: red;
+            }
+            .bottom {
+                text-align: start;
+                padding: 10px 50px;
+            }
+
+            .bottom h1, .bottom h2 {
+                color: gray;
+                text-decoration: underline;
+            }
+            .bottom p span {
+                font-weight: bold;
+            }
+
+            .bottom ul {
+                list-style-type: none;
+                text-align: start;
+                list-style-image: url('./Assets/pngwing.com.png');
+                list-style-position: inside;
+            }
+            .bottom ul li {
+            color: red;
+            text-decoration: underline;
+            }
+            .footer {
+                background-color: lightpink;
+                margin: 10px 30px
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contaner">
+            <div class="top">
+                <img src="./Assets/logo.png" alt="not found">
+                <span>Trips Calculator Inc.</span>
+                <img src="./Assets/logo.png" alt="not found">
+            </div>
+            <div class="mid">
+                <span><a href="https://google.com">https://google.com</a></span>
+                <span><a href="https://google.com">https://google.com</a></span>
+                <span><a href="https://google.com">https://google.com</a></span>
+            </div>
+            <div class="bottom">
+                <h1>Introduction</h1>
+                <p>
+                    <span>Trips Calculator Inc.</span>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque tenetur quisquam consequuntur amet culpa vitae quasi corporis esse, consectetur minima tempora.
+                </p>
+                <h2>Calculators</h2>
+                <ul>
+                    <li>Grades Calculator</li>
+                    <li>Interest Calculator</li>
+                </ul>
+            </div>
+            <p class="footer">
+                Trips Calculator Inc.
+            </p>
+        </div>
+    </body>
+</html>

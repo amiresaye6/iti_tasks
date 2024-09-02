@@ -1,0 +1,152 @@
+<html>
+
+<head>
+    <title>Task five</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        input {
+            border: 2px solid gray;
+        }
+
+        .dotted {
+            border-bottom: 5px dotted green;
+            padding-bottom: 20px;
+        }
+        .center-table {
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        .green-text {
+            color: green;
+            font-weight: bold;
+        }
+
+        .green-line {
+            border: none;
+            height: 3px;
+            background-color: green;
+            width: 40%;
+        }
+
+        .header {
+            background-color: lightgreen;
+            height: 50px;
+            padding: 10px 20px;
+        }
+        .footer {
+            background-color: lightgreen;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">Shopping</div>
+    <form action="./sixth_task.html">
+        <table class="center-table dotted">
+            <tr>
+                <td>
+                    <span class="green-text">Non-Profit Organization</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td>Phone Number</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name"></td>
+                <td><input type="text" name="phone_number"></td>
+            </tr>
+            <tr>
+                <td>Street Address:</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="text" name="street_address"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>State:</td>
+                <td>Zip Code:</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="city"></td>
+                <td><input type="text" name="state"></td>
+                <td><input type="text" name="zip_code"></td>
+            </tr>
+        </table>
+        <table class="center-table dotted">
+            <tr>
+                <td><span class="green-text">Sponsor Contact Info</span></td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td>Last Name</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="first_name"></td>
+                <td><input type="text" name="last_name"></td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td>Email Address</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="phone"></td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>Street Address:</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="text" name="sponsor_street_address"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>State:</td>
+                <td>Zip Code:</td>
+            </tr>
+            <tr>
+                <td><input type="text" name="sponsor_city"></td>
+                <td><input type="text" name="sponsor_state"></td>
+                <td><input type="text" name="sponsor_zip_code"></td>
+            </tr>
+        </table>
+        <table class="center-table">
+            <tr>
+                <td>Donation Amount:</td>
+                <td>Payment Method</td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="amount">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="method">
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">MasterCard</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit"></td>
+            </tr>
+        </table>
+    </form>
+    <div class="footer"></div>
+</body>
+
+</html>
