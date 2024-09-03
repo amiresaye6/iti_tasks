@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table{
+            width:200px;
+            padding:10px;
+            margin:10px auto;
+            border:1px solid black;
+            text-align:center;
+        }
+        td,th{
+            border:1px solid black;
+         }
+
+    </style>
+</head>
+<body>
+   
+
+    <script>
+       /* var myname = "Nasr Abd Elaziz";*/
+        //use write and writeln with document object
+        /*document.write("<h1>"+myname+"</h1>");*/
+        //document.write("Hello<br/>");
+        //document.write("World");
+        var arr = [10, 20, 30, 40, 50, 60];
+        document.write("<table><tr><th>Values</th></tr>");
+        var result=0;// undefined
+        for (var i = 0; i < arr.length; i++) {
+            if (i % 2 == 0) {
+                document.write("<tr bgcolor='lightyellow'><td>" + arr[i] + "</td></tr>");
+            } else {
+                document.write("<tr bgcolor='lightgray'><td>" + arr[i] + "</td></tr>");
+            }
+            
+            result += arr[i];
+        }
+
+        document.write("<tr><th>Summation = " + result + "</th></tr></table>");
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>Task 1.2</title>
+    <script>
+        var sum = 0;
+        do {
+            // will repeat until the sum is larger than 100
+            var num = window.prompt("enter your message");
+            if (num === "0") {
+                break;
+            }
+            if (isNaN(num) || num === "") {
+                window.alert("Please enter a number");
+                continue;
+            }
+            sum += parseInt(num);
+        } while (sum < 100);
+
+        window.alert("The sum is " + sum);
+        document.write("<h1>The sum is</h1><h2 style='color: red'>" + sum + "</h2>");
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

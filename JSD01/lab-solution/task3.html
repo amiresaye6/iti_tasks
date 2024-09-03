@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>Task 3</title>
+    <script>
+        do {
+            var imageName = window.prompt("please enter image name: ex [bird1.jpg, bird2.jpg, bird3.jpg]");
+        } while (!imageName);
+
+        do {
+            var Text = window.prompt("please enter your text");
+        } while (!Text);
+
+        do {
+            var Color = window.prompt("please enter your fav color");
+        } while (!Color);
+
+        document.write("<h1 style='color: " + Color + "'>" + Text + "</h1><img src='" + imageName + "' alt='image not found' style='width: 300px; height: 300px; border: 5px solid " + Color + "'>");
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

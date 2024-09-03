@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Task 2</title>
+    <script>
+        document.writeln("<h1>Adding - Multplying - and Dividing 3 numbers</h1><hr/>");
+        var nums = [,];
+        for (let i = 0; i < 3; i++) {
+            let num = window.prompt("Enter number " + (i + 1));
+            if (isNaN(num) || num === "") {
+                window.alert("Please enter a number");
+                i--;
+                continue
+            }
+            nums[i] = parseInt(num);
+        }
+        document.write("<h1 style='color: red'>Sum Of Three Values <span style='color: black'>" + nums[0] + "+" + nums[1] + "+" + nums[2] + " = " + (nums[0] + nums[1] + nums[2]) + "</span></h1>");
+        document.write("<h1 style='color: red'>Multiplication Of Three Values <span style='color: black'>" + nums[0] + "*" + nums[1] + "*" + nums[2] + " = " + (nums[0] * nums[1] * nums[2]) + "</span></h1>");
+        document.write("<h1 style='color: red'>Division Of Three Values <span style='color: black'>" + nums[0] + "/ " + nums[1] + "/" + nums[2] + " = " + (nums[0] / nums[1] / nums[2]) + "</span></h1>");
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
