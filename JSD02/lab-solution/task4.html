@@ -1,0 +1,50 @@
+<head>
+    <title>Task 4</title>
+    <script>
+        function validNum(numEx) {
+            var extensions = ['010', '011', '012', '015'];
+            for (let e of extensions) {
+                if (e === numEx) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        var name = '';
+        do {
+            name = window.prompt("Enter your name please:");
+            if (!name || typeof name !== "string") {
+                window.alert("Enter a valid string please.");
+                continue;
+            } else {
+                break;
+            }
+        } while (true);
+
+        var phone = '';
+        do {
+            phone = window.prompt("Enter your phone number please (ex: 015-55127543):");
+            var parts = phone.split('-');
+            if (
+                phone.length !== 12 ||
+                phone.charAt(3) !== '-' ||
+                !validNum(parts[0]) ||
+                parts[1].length !== 8 ||
+                isNaN(parts[1])
+            ) {
+                window.alert("Enter a valid phone number please: ex: 015-55127543");
+                continue;
+            } else {
+                break;
+            }
+        } while (true);
+
+        document.writeln("<h1>User name is " + name + "</h1><h1>User phone number is " + phone + "</h1>")
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

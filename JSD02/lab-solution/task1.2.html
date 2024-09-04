@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>task 1.2</title>
+    <style>
+        table {
+            border: 4px solid red;
+            width: 50px;
+            height: 50px;
+        }
+
+        td {
+            border: 3px solid red;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var solution = []
+        var nums = window.prompt('enter array values');
+        if (nums !== '') {
+            var arr = nums.split(',');
+            arr.forEach(function (number) {
+                if (isNaN(number)) {
+                    window.alert('invalid values: please enter only numbers separated with commas ","');
+                } else {
+                    solution.push(parseInt(number));
+                }
+            });
+            console.log(solution)
+
+            document.writeln('<table>')
+
+            solution.forEach(function (number) {
+                document.writeln('<tr><td>' + number + '</td></tr>')
+            })
+            document.writeln('</table>')
+
+            var duplicates = [];
+            solution.forEach(function (num, index) {
+                if (solution.indexOf(num) !== index) {
+                    duplicates.push(index);
+                }
+            });
+
+            document.writeln('<h3>repeated rows</h3>')
+            duplicates.forEach(function (d) {
+                document.writeln('<h4>row ' + d + '</h4>')
+            });
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>task 1.1</title>
+        <script>
+            var solution = []
+            var nums = window.prompt('enter array values');
+            if (nums !== '') {
+                var arr = nums.split(',');
+                arr.forEach(function(number) {
+                    if (isNaN(number)) {
+                        window.alert('invalid values: please enter only numbers seperated with comas ","');
+                    } else {
+                        solution.push(parseInt(number));
+                    }
+                });
+                document.writeln('the total is')
+                console.log(solution)
+
+                var r = solution.reduce(function(p, c) {
+                    return p += c;
+                })
+                console.log(r)
+                document.writeln('<h1>' + r + '</h1>')
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

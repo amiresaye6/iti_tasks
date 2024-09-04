@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Student Grades</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        th,
+        td {
+            border: 2px solid yellow;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #6f6f6f;
+        }
+
+        td {
+            background-color: #fefbd8;
+        }
+    </style>
+    <script>
+        var grades = [
+            [1, 2, 3],
+            [4, 5, 6]
+        ];
+
+        document.write("<table>");
+        document.write("<tr><th>ST1</th><th>ST2</th><th>ST3</th><th>Sum</th></tr>");
+
+        for (var i = 0; i < grades.length; i++) {
+            var sum = 0;
+            document.write("<tr>");
+            for (var j = 0; j < grades[i].length; j++) {
+                document.write("<td>" + grades[i][j] + "</td>");
+                sum += grades[i][j];
+            }
+            document.write("<td>" + sum + "</td>");
+            document.write("</tr>");
+        }
+
+        document.write("</table>");
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

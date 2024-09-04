@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title>task 6.1</title>
+    <script>
+        const input = window.prompt('please enter sapmle text to try: ')
+        const output = input.split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+        ;
+        console.log(output);
+        document.write('<h1>' + output + '</h1>')
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

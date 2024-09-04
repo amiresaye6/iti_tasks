@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Names Generator</title>
+    <script>
+        document.writeln("<h1>Random Names Generator</h1>")
+        document.writeln("<p>Relode page to regenerate new names</p>")
+        function getRandomNames(arr) {
+            let name1, name2;
+            do {
+                name1 = arr[Math.floor(Math.random() * arr.length)];
+                name2 = arr[Math.floor(Math.random() * arr.length)];
+            } while (name1 === name2);
+            return [name1, name2];
+        }
+
+        var arr = ["ahmed", "ali", "moustafa", "ibraheem", "alaa", "hamada"];
+        const [name1, name2] = getRandomNames(arr);
+        document.writeln("<h2 style='color: lightgreen; font-weight: bold;'>" + name1 + ' ' + name2 + "</h2>")
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<head>
+    <title>task 6</title>
+    <script>
+        function toPascalCase(str) {
+            return str
+                .split(' ')  // Split the string into an array of words
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())  // Capitalize the first letter and make the rest lowercase
+                .join(' ');  // Join the array back into a string
+        }
+
+        function isNumberArray(arr) {
+            return arr.every(item => typeof item === 'number');
+        }
+
+        function handleUserChoice(arr) {
+            const choice = prompt("Enter a letter (a - h):").toLowerCase();
+
+            switch (choice) {
+                case 'a':
+                    alert("Original Array: " + arr);
+                    break;
+                case 'b':
+                    alert("Ascending Order: " + [...arr].sort((a, b) => a - b));
+                    break;
+                case 'c':
+                    alert("Descending Order: " + [...arr].sort((a, b) => b - a));
+                    break;
+                case 'd':
+                    alert("Reversed Original Array: " + [...arr].reverse());
+                    break;
+                case 'e':
+                    const evenNumbers = arr.filter(num => num % 2 === 0);
+                    if (evenNumbers.length > 0) {
+                        alert("Even Numbers: " + evenNumbers);
+                    } else {
+                        alert("No even numbers found.");
+                    }
+                    break;
+                case 'f':
+                    const divisor = parseFloat(prompt("Enter a number to find divisible values:"));
+                    if (!isNaN(divisor)) {
+                        const divisibleNumbers = arr.filter(num => num % divisor === 0);
+                        if (divisibleNumbers.length > 0) {
+                            alert("Numbers divisible by " + divisor + ": " + divisibleNumbers);
+                        } else {
+                            alert("No numbers divisible by " + divisor + " found.");
+                        }
+                    } else {
+                        alert("Invalid number.");
+                    }
+                    break;
+                case 'g':
+                    const discountedArray = arr.map(num => num * 0.7);
+                    alert("Array with 30% Discount: " + discountedArray);
+                    break;
+                case 'h':
+                    alert("Concatenated String: " + arr.join('***'));
+                    break;
+                default:
+                    alert("Invalid choice.");
+                    break;
+            }
+        }
+
+
+        const size = parseInt(prompt("Enter the size of the array:"));
+        const arr = [];
+
+        for (let i = 0; i < size; i++) {
+            let num = parseFloat(prompt("Enter a number:"));
+            if (!isNaN(num)) {
+                arr.push(num);
+            } else {
+                alert("Invalid number, please enter a valid number.");
+                i--;
+            }
+        }
+
+        if (isNumberArray(arr)) {
+            do {
+                handleUserChoice(arr);
+            } while (confirm("Do you want to repeat running?"));
+        } else {
+            alert("The array contains non-number values.");
+        }
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

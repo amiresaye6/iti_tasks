@@ -1,0 +1,21 @@
+6.1 - write js code to convert a string into Pascal Case :
+	ex:
+		input: "ali mohamed"
+		output: "Ali Mohamed"
+-----------------------
+6.2 - receive an array of numbers from user it's size will determined from user , then receive it and make sure all values is Number
+	then ask user to enter one of the following letter
+	a : to display array with the same receiving order
+	b : to display array with ascending order (without updaing original object)
+	c : to display array with descending order (without updaing original object)
+	d : to reversed version of original array  (without updaing original object)
+	e : to display even numbers only from array if there no even numbers , display alert to inform user with that
+	f : receive number from user then display all numbers from array which divisible by received number , if there no result inform user with that
+	g : display new array with 30% discount for all numbers in original array
+	h : display string which represent all numbers of array concated with ***
+
+	after each selected choice you have to ask user if he | she want to repeate running 
+------------------------
+48561318
+
+	 
