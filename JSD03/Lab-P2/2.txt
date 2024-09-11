@@ -1,0 +1,8 @@
+
+NB: to access body in script => 
+document.body.style.backgroundColor=  "color"
+	or 
+document.body.style.backgroundImage="url(imagepath)";
+
+
+a- display Count Down from 10 to 0 with different background image for body and when your counter value equals to 0  you have to close current window 

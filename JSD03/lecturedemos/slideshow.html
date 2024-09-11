@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #mainwrapper{
+            width:800px;
+            border:1px solid black;
+            padding:10px;
+            margin:10px auto;
+            text-align:center;
+        }
+        #imgwrapper{
+            width:600px;
+           margin:10px;
+           margin:10px auto;
+        }
+        #controlswrapper{
+            border:1px solid black;
+            padding:10px;
+            margin:10px auto;
+            text-align:center;
+        }
+        input{
+            width:100px;
+            padding:5px;
+           font-weight:bold;
+           margin-inline:10px;
+           border-radius:10px;
+
+        }
+        input:focus{
+            background-color:pink;
+        }
+        img{
+            width:400px;
+            height:400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainwrapper">
+        <div id="imgwrapper">
+            <img src="UP/1.jpg" id="myimg" />
+        </div>
+        <div id="controlswrapper">
+            <input type="button" value="Start" onclick="startshow();" />
+            <input type="button" value="Next" onclick="nextimg();" />
+            <input type="button" value="Prev" onclick="previmg();" />
+            <input type="button" value="stop" onclick="stopshow();" />
+        </div>
+    </div>
+    <script>
+        var imgarr = ["UP/1.jpg", "UP/2.jpg", "UP/3.jpg", "UP/4.jpg", "UP/5.jpg", "UP/6.jpg", "UP/7.jpg"];
+        i = 0;
+        function nextimg() {
+            i++;
+            if (i >= imgarr.length) i = 0;
+           myimg.src= imgarr[i];
+        }
+        function previmg() {
+            i--;
+            if (i < 0) i = imgarr.length-1;
+            myimg.src = imgarr[i];
+        }
+        function startshow() {
+            t=setInterval("nextimg()", 1000);
+        }
+        function stopshow() {
+            clearInterval(t);
+        }
+    </script>
+</body>
+</html>

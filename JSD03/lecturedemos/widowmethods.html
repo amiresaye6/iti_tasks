@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //open("url","target","options")=> return reference to opened window
+        //open("childwidow.html", "", "width=200;height=200");
+        function openchildwidow() {
+           child= open("childwindow.html", "", "width=200,height=200");
+        }
+        function closechildwidow() {
+            child.close();// close caller : parent
+        }
+         var student = {
+            ID: 10,
+            Name: "ahmed",
+            address: {
+                street: "streetname",
+                city: "cityname",
+                zipcode: 1234,
+
+            },
+            courses: [
+                { crsID: 1000, crsName: "js" },
+                { crsID: 2000, crsName: "XML" }
+            ],
+            Print: function () { return "hello from print"; }
+        };
+        // scrollTo(0,200) | scrollBy(0,200) : resizeTo , resizeBy , moveTo , moveBy
+        function scrollchildwidow() {
+            child.scrollBy(0, 50);
+        }
+        function movechildwidow() {
+            child.moveBy(50, 50);
+            child.focus();
+        }
+    </script>
+
+
+</head>
+<body style="background-color:lightgray;">
+    <h4 style="text-align:center">Parent Window</h4>
+    <input type="button" value="open child" onclick="openchildwidow();" /><br />
+    <input type="button" value="close child" onclick="closechildwidow();" /><br />
+    <input type="button" value="scroll child" onclick="scrollchildwidow();" /><br />
+    <input type="button" value="Move child" onclick="movechildwidow();" /><br />
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Image and Color Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        .gender-selection {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .gender-selection img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Personal Information Form</h2>
+<form onsubmit="handleSubmit(event)">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+
+    <label>Gender:</label>
+    <div class="gender-selection">
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">
+            <img src="./UP/man.webp" alt="Male">
+            Male
+        </label>
+    </div>
+    <div class="gender-selection">
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">
+            <img src="./UP/women.webp" alt="Female">
+            Female
+        </label>
+    </div>
+
+    <label for="color">Favorite Color:</label>
+    <select id="color" name="color" required>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const age = document.getElementById('age').value;
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const color = document.getElementById('color').value;
+
+        // Set gender image based on selection
+        const genderImage = gender === 'male'
+            ? 'https://via.placeholder.com/50x50?text=M'
+            : 'https://via.placeholder.com/50x50?text=F';
+
+        // Open new window with custom message
+        const newWindow = window.open('', '', 'width=300,height=300');
+        newWindow.document.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Welcome</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        text-align: center;
+                        margin-top: 50px;
+                    }
+                    .name {
+                        color: ${color};
+                    }
+                </style>
+            </head>
+            <body>
+                <h2>Welcome <span class="name">${name}</span>!</h2>
+                <img src="${genderImage}" alt="${gender}" />
+                <p>Age: ${age}</p>
+            </body>
+            </html>
+        `);
+        newWindow.document.close();
+    }
+</script>
+
+</body>
+</html>

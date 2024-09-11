@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function closeparent() {
+            opener.close();
+            //close()// caller this (cureent window : child )
+        }
+        function alertparentstudent() {
+            alert(opener.student.Name)
+        }
+
+    </script>
+</head>
+<body style="background-color:yellow;">
+    <h2 style="text-align:center">child window</h2>
+    <input type="button" value="close parent" onclick="closeparent()" />
+    <br />
+    <input type="button" value="alertname" onclick="alertparentstudent()" />
+    <pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+    <h4 style="text-align:center;">Middle of child</h4>
+
+    <pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>
