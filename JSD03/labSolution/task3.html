@@ -2,40 +2,38 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Image Slideshow</title>
     <style>
-        #mainwrapper{
-            width:800px;
-            border:1px solid black;
-            padding:10px;
-            margin:10px auto;
-            text-align:center;
+        #mainwrapper {
+            width: 800px;
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px auto;
+            text-align: center;
         }
-        #imgwrapper{
-            width:600px;
-           margin:10px;
-           margin:10px auto;
+        #imgwrapper {
+            width: 600px;
+            margin: 10px auto;
         }
-        #controlswrapper{
-            border:1px solid black;
-            padding:10px;
-            margin:10px auto;
-            text-align:center;
+        #controlswrapper {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px auto;
+            text-align: center;
         }
-        input{
-            width:100px;
-            padding:5px;
-           font-weight:bold;
-           margin-inline:10px;
-           border-radius:10px;
-
+        input {
+            width: 100px;
+            padding: 5px;
+            font-weight: bold;
+            margin-inline: 10px;
+            border-radius: 10px;
         }
-        input:focus{
-            background-color:pink;
+        input:focus {
+            background-color: pink;
         }
-        img{
-            width:400px;
-            height:400px;
+        img {
+            width: 400px;
+            height: 400px;
         }
     </style>
 </head>
@@ -46,30 +44,46 @@
             <img src="UP/1.jpg" id="myimg" />
         </div>
         <div id="controlswrapper">
-            <input type="button" value="Start" onclick="startshow();" />
+            <input type="button" value="Start" onclick="startshow();" id="startbtn" />
             <input type="button" value="Next" onclick="nextimg();" />
             <input type="button" value="Prev" onclick="previmg();" />
-            <input type="button" value="stop" onclick="stopshow();" />
+            <input type="button" value="Stop" onclick="stopshow();" id="stopbtn" />
         </div>
     </div>
     <script>
         var imgarr = ["UP/1.jpg", "UP/2.jpg", "UP/3.jpg", "UP/4.jpg", "UP/5.jpg", "UP/6.jpg", "UP/7.jpg"];
-        i = 0;
+        var i = 0;
+        var t;
+        var isRunning = false;
+
         function nextimg() {
             i++;
             if (i >= imgarr.length) i = 0;
-           myimg.src= imgarr[i];
+            document.getElementById('myimg').src = imgarr[i];
         }
+
         function previmg() {
             i--;
-            if (i < 0) i = imgarr.length-1;
-            myimg.src = imgarr[i];
+            if (i < 0) i = imgarr.length - 1;
+            document.getElementById('myimg').src = imgarr[i];
         }
+
         function startshow() {
-            t=setInterval("nextimg()", 1000);
+            if (!isRunning) {
+                t = setInterval(nextimg, 1000);
+                isRunning = true;
+                document.getElementById('startbtn').disabled = true;
+                document.getElementById('stopbtn').disabled = false;
+            }
         }
+
         function stopshow() {
-            clearInterval(t);
+            if (isRunning) {
+                clearInterval(t);
+                isRunning = false;
+                document.getElementById('startbtn').disabled = false;
+                document.getElementById('stopbtn').disabled = true;
+            }
         }
     </script>
 </body>

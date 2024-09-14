@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .styleone{
+            background-color:red;
+            border:2px solid black;
+            width:200px;
+        }
+        .styletwo {
+            color:white;
+            font:bold 15px tahoma;
+            text-align:center;
+            text-decoration:underline;
+        }
+    </style>
+    <script>
+        function applystyleon() {
+            targetp = document.getElementById('pone');
+            /*targetp.className = " styleone ";*/
+            targetp.classList.add("styleone");
+            //targetp.style.backgroundColor = "red";
+            //// change property in it's style : r
+            //targetp.style.width = "200px";
+
+            //// width :
+            //targetp.style.border = "2px solid black";
+            /*targetp.style.borderTopLeftRadius = "20px";*/
+            // border
+        }
+        function removestyleon() {
+            targetp = document.getElementById('pone');
+            /*targetp.className = "";*/
+            targetp.classList.remove("styleone");
+            //targetp.style.backgroundColor = "white";
+            //// change property in it's style : r
+            //targetp.style.width = "100%";
+
+            // width :
+           /* targetp.style.border = "none";*/
+        }
+        function applystyletwo() {
+            targetp = document.getElementById('pone');
+            /*targetp.className += " styletwo ";*/
+            targetp.classList.add("styletwo");
+        }
+        function removestyletwo() {
+            targetp = document.getElementById('pone');
+            //targetp.className = "";
+            targetp.classList.remove("styletwo");
+        }
+        function togglefun() {
+            targetp = document.getElementById('pone');
+            targetp.classList.toggle("styleone");
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="ChangePOneStyle" onclick="applystyleon();" />
+    <input type="button" value="removePOneStyle" onclick="removestyleon();" />
+    <input type="button" value="ChangePtwoStyle" onclick="applystyletwo();" />
+    <input type="button" value="removePtwoStyle" onclick="removestyletwo();" />
+    <input type="button" value="toggleStyleone" onclick="togglefun();" />
+    <p id="pone">ITI</p>
+    <p id="ptwo">Mansoura</p>
+</body>
+</html>

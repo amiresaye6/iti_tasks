@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        input {
+            padding: 5px;
+            width: 80%
+        }
+        button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>News Table Task</h1>
+
+    <div>
+        <input type="text" id="newsInput" placeholder="Enter news">
+        <button onclick="addNews()">Add News</button>
+    </div>
+
+    <table id="newsTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>News</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <button onclick="showRowCount()">Show Row Count</button>
+
+    <script src="task1.js"></script>
+</body>
+</html>

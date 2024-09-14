@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table{
+            width:300px;
+            border:1px solid black;
+            text-align:center;
+            margin:10px auto;
+
+        }
+        td,th{
+            border:1px solid black;
+        }
+        tbody>tr:nth-child(odd){
+            background-color:lightcoral;
+        }
+        tbody > tr:nth-child(even) {
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        i = 100;
+        function arrrowfun() {
+            //1-  get user input;
+            var userinput = document.querySelector('input[type=text]').value;
+            /*document.querySelector("table:first-of-type > tbody")*/
+            //document.getElementsByTagName('tbody')[0].innerHTML += "<tr><td>" + 200 + "</td><td>" + userinput + "</td></tr>";
+            // 2- create tr
+            var createdtr = document.createElement("tr"); //<tr></tr>
+            
+            // create 2 td 
+            // assign for first td : serial increment
+            var tdone = document.createElement('td');//<td></td>
+            // assign for second one : user value
+            i += 100;
+            tdone.innerText =i;//<td>200</td>
+
+            var tdtwo = document.createElement('td');//<td></td>
+            // assign for second one : user value
+            tdtwo.innerText = userinput;//<td>ali</td>
+            createdtr.appendChild(tdone);//<tr><td>200</td></tr>
+            createdtr.appendChild(tdtwo);//<tr><td>200</td><td>ali</td></tr>
+            // 3- add created td for created tr
+            // select table 
+            // add created tr within table/
+
+            // create attribute
+            //var createdidattr = document.createAttribute("id");
+            //createdidattr.value = i;
+            //createdtr.setAttributeNode(createdidattr);
+
+            createdtr.setAttribute("id", i);
+
+
+
+            document.getElementsByTagName('tbody')[0].appendChild(createdtr);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text"/>
+        <input type="button" value="AddRow" onclick="arrrowfun();"/>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>serail</th>
+                <th>name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>100</td>
+                <td>ahmed</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

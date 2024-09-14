@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function addfun() {
+            var dummyh3 = document.createElement('h3');
+            dummyh3.innerText = "Hello World";
+            var targetdiv = document.getElementsByTagName('div')[0];
+            targetdiv.insertAdjacentElement("afterEnd",dummyh3);
+        }
+    </script>
+
+</head>
+<body>
+    <input type="button" value="add" onclick="addfun();"/>
+    <div>
+        <p>First p in div</p>
+    </div>
+</body>
+</html>

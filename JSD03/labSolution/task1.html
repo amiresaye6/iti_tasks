@@ -30,69 +30,8 @@
 </head>
 
 <body>
-
     <a href="#" onclick="openAutoScrollWindow()">Click to open auto-scroll window</a>
-    <script>
-        function openAutoScrollWindow() {
-            const newWindow = window.open('', '', `width=${window.innerWidth / 3},height=${window.innerHeight / 3}`);
-            newWindow.document.write(`
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Auto Scroll</title>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                    }
-                    #content {
-                        height: 2000px;
-                        margin: 20px;
-                    }
-                </style>
-            </head>
-            <body>
-                <div id="content">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur consequuntur incidunt iste illo excepturi suscipit similique iusto optio accusamus error eius vel qui mollitia, unde itaque corporis ea officiis perspiciatis!
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta recusandae et, maxime perspiciatis facilis autem, ipsa, ipsam repudiandae quasi voluptatum voluptates. Totam, facilis alias. A blanditiis fuga id illum illo!
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque, fuga corrupti? Aliquid quaerat asperiores officiis nemo tenetur quisquam doloribus excepturi sequi tempore iste, distinctio delectus nisi iusto animi rerum fuga.
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil earum iure inventore, repudiandae ipsam perferendis. Debitis dolore dolores recusandae itaque voluptatum eos, nostrum tempora consequuntur enim iusto aliquam sapiente. Enim?
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vitae, distinctio voluptates modi consequuntur sunt illum sit eius harum eum praesentium quidem magni voluptatum ut dicta quam laboriosam ullam est?</p>
-                    <p style="margin-top: 1800px;">You have reached the end.</p>
-                </div>
-                <script>
-                    function autoScrollToBottom() {
-                        const scrollStep = 10; // Speed of the scroll (pixels per step)
-                        const scrollInterval = 10; // Frequency of the scroll (milliseconds per step)
-                        
-                        let scrollPosition = 0;
-                        const scrollHeight = document.body.scrollHeight;
-
-                        const scroll = setInterval(() => {
-                            scrollPosition += scrollStep;
-                            window.scrollTo(0, scrollPosition);
-
-                            // Stop scrolling and close the window when the bottom is reached
-                            if (scrollPosition >= scrollHeight - window.innerHeight) {
-                                clearInterval(scroll);
-                                window.close();
-                            }
-                        }, scrollInterval);
-                    }
-
-                    // Ensure the auto scroll starts after content is fully loaded
-                    window.onload = autoScrollToBottom;
-                <\/script>
-            </body>
-            </html>
-        `);
-
-            // Ensure the new window is fully loaded before triggering the scroll
-            newWindow.document.close();  // Required to complete the writing of the new window
-        }
-    </script>
-
+    <script src="task1.js"></script>
 </body>
 
 </html>

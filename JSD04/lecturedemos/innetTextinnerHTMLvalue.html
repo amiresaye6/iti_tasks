@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div{
+            width:400px;
+            height:300px;
+            border:2px solid black;
+            padding:10px;
+            margin:10px;
+        }
+    </style>
+    <script>
+        function myfun() {
+            // select user inputs from input type text
+            var userinput = document.querySelector('input[type=text]');
+            //console.log(userinput.value);
+            // then add user inputs inside div
+            document.getElementsByTagName('div')[0].innerHTML += userinput.value;
+
+        }
+    </script>
+</head>
+<body>
+    <input type="text" />
+    <input type="button" value="Add" onclick="myfun();"/>
+    <div id="mainwrapper">
+        information technology instiute
+        <p>ITI Mansoura</p>
+    </div>
+</body>
+</html>
