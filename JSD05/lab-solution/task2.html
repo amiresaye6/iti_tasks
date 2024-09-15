@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contaner {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 0.875em;
+        }
+    </style>
+</head>
+<body>
+    <form id="userForm">
+        <div class="contaner">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <span id="nameError" class="error"></span>
+            
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="">Select a country</option>
+                <option value="US" data-zipcode="12345">United States</option>
+                <option value="CA" data-zipcode="A1A 1A1">Canada</option>
+            </select>
+            
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" name="zip" readonly>
+            
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email">
+            <span id="emailError" class="error"></span>
+            
+            <label for="hobbies">Hobbies:</label>
+            <input type="checkbox" id="reading" name="hobbies" value="Reading"> Reading
+            <input type="checkbox" id="swimming" name="hobbies" value="Swimming"> Swimming
+            <input type="checkbox" id="sleeping" name="hobbies" value="Sleeping"> Sleeping
+            
+            <button type="submit">Submit</button>
+            <button type="button" id="clearButton">Clear</button>
+        </div>
+    </form>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameInput = document.getElementById('name');
+            const countrySelect = document.getElementById('country');
+            const zipInput = document.getElementById('zip');
+            const emailInput = document.getElementById('email');
+            const hobbies = document.querySelectorAll('input[name="hobbies"]');
+            const clearButton = document.getElementById('clearButton');
+            const form = document.getElementById('userForm');
+
+            nameInput.focus();
+
+            countrySelect.addEventListener('change', (event) => {
+                const selectedOption = event.target.options[event.target.selectedIndex];
+                zipInput.value = selectedOption.getAttribute('data-zipcode') || '';
+            });
+
+            form.addEventListener('submit', (event) => {
+                let valid = true;
+
+                if (nameInput.value.trim() === '') {
+                    document.getElementById('nameError').textContent = 'Please enter your name.';
+                    valid = false;
+                } else {
+                    document.getElementById('nameError').textContent = '';
+                }
+
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value.trim())) {
+                    document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                    valid = false;
+                } else {
+                    document.getElementById('emailError').textContent = '';
+                }
+
+                const atLeastOneHobbySelected = Array.from(hobbies).some(hobby => hobby.checked);
+                if (!atLeastOneHobbySelected) {
+                    alert('Please select at least one hobby.');
+                    valid = false;
+                }
+
+                if (!valid) {
+                    event.preventDefault();
+                }
+            });
+
+            clearButton.addEventListener('click', () => {
+                if (confirm('Are you sure you want to clear the form?')) {
+                    form.reset();
+                    zipInput.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

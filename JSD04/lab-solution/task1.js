@@ -18,7 +18,6 @@ function addNews() {
     noCell.textContent = newsCount;
     newsCell.textContent = newsInput;
 
-    // Clear the input field after adding the news
     document.getElementById('newsInput').value = '';
 }
 

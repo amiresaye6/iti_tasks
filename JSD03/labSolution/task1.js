@@ -35,8 +35,8 @@ function openAutoScrollWindow() {
             </div>
             <script>
                 function autoScrollToBottom() {
-                    const scrollSpeed = 2; // Speed of scrolling (pixels per interval)
-                    const scrollInterval = 10; // Time interval for scrolling (ms)
+                    const scrollSpeed = 2;
+                    const scrollInterval = 10;
                     let scrollPosition = 0;
 
                     const scroll = setInterval(() => {
@@ -48,7 +48,7 @@ function openAutoScrollWindow() {
 
                         if (scrollPosition + viewportHeight >= scrollHeight) {
                             clearInterval(scroll);
-                            window.close(); // Immediately close when reaching the bottom
+                            window.close();
                         }
                     }, scrollInterval);
                 }

@@ -8,7 +8,6 @@ function addTask() {
     const tableBody = document.querySelector('#taskTable tbody');
     const newRow = tableBody.insertRow();
 
-    // Done (Checkbox) column
     const doneCell = newRow.insertCell(0);
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -21,11 +20,9 @@ function addTask() {
     };
     doneCell.appendChild(checkbox);
 
-    // Task column
     const taskCell = newRow.insertCell(1);
     taskCell.textContent = taskInput;
 
-    // Delete button column
     const deleteCell = newRow.insertCell(2);
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';

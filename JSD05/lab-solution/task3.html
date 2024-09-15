@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Text Style Controller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .box {
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #000;
+            text-align: center;
+            width: 50%;
+            background-color: #f0f0f0;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="contentBox">
+        This is a sample text that will be styled. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod
+        voluptate doloribus modi odit labore at illum aspernatur accusamus sit, vitae optio ab perferendis voluptatum
+        eaque nesciunt quis tempore, reiciendis sapiente!
+    </div>
+    <table>
+        <tr>
+            <th>Font Size</th>
+            <th>Font Color</th>
+            <th>Text Align</th>
+            <th>Font Style</th>
+            <th>Text Decoration</th>
+            <th>Font Weight</th>
+            <th>Letter Spacing</th>
+            <th>Line Height</th>
+            <th>Background Color</th>
+            <th>Text Transform</th>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="radio" name="fontSize" value="16px" onclick="applyStyle()"> 16px</label><br>
+                <label><input type="radio" name="fontSize" value="20px" onclick="applyStyle()"> 20px</label><br>
+                <label><input type="radio" name="fontSize" value="24px" onclick="applyStyle()"> 24px</label><br>
+                <label><input type="radio" name="fontSize" value="30px" onclick="applyStyle()"> 30px</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="fontColor" value="black" onclick="applyStyle()"> Black</label><br>
+                <label><input type="radio" name="fontColor" value="blue" onclick="applyStyle()"> Blue</label><br>
+                <label><input type="radio" name="fontColor" value="red" onclick="applyStyle()"> Red</label><br>
+                <label><input type="radio" name="fontColor" value="green" onclick="applyStyle()"> Green</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="textAlign" value="left" onclick="applyStyle()"> Left</label><br>
+                <label><input type="radio" name="textAlign" value="center" onclick="applyStyle()"> Center</label><br>
+                <label><input type="radio" name="textAlign" value="right" onclick="applyStyle()"> Right</label><br>
+                <label><input type="radio" name="textAlign" value="justify" onclick="applyStyle()"> Justify</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="fontStyle" value="normal" onclick="applyStyle()"> Normal</label><br>
+                <label><input type="radio" name="fontStyle" value="italic" onclick="applyStyle()"> Italic</label><br>
+                <label><input type="radio" name="fontStyle" value="oblique" onclick="applyStyle()"> Oblique</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="textDecoration" value="none" onclick="applyStyle()"> None</label><br>
+                <label><input type="radio" name="textDecoration" value="underline" onclick="applyStyle()">
+                    Underline</label><br>
+                <label><input type="radio" name="textDecoration" value="line-through" onclick="applyStyle()">
+                    Line-through</label><br>
+                <label><input type="radio" name="textDecoration" value="overline" onclick="applyStyle()">
+                    Overline</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="fontWeight" value="normal" onclick="applyStyle()"> Normal</label><br>
+                <label><input type="radio" name="fontWeight" value="bold" onclick="applyStyle()"> Bold</label><br>
+                <label><input type="radio" name="fontWeight" value="bolder" onclick="applyStyle()"> Bolder</label><br>
+                <label><input type="radio" name="fontWeight" value="lighter" onclick="applyStyle()"> Lighter</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="letterSpacing" value="normal" onclick="applyStyle()">
+                    Normal</label><br>
+                <label><input type="radio" name="letterSpacing" value="2px" onclick="applyStyle()"> 2px</label><br>
+                <label><input type="radio" name="letterSpacing" value="4px" onclick="applyStyle()"> 4px</label><br>
+                <label><input type="radio" name="letterSpacing" value="6px" onclick="applyStyle()"> 6px</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="lineHeight" value="normal" onclick="applyStyle()"> Normal</label><br>
+                <label><input type="radio" name="lineHeight" value="1.5" onclick="applyStyle()"> 1.5</label><br>
+                <label><input type="radio" name="lineHeight" value="2" onclick="applyStyle()"> 2</label><br>
+                <label><input type="radio" name="lineHeight" value="2.5" onclick="applyStyle()"> 2.5</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="backgroundColor" value="white" onclick="applyStyle()">
+                    White</label><br>
+                <label><input type="radio" name="backgroundColor" value="yellow" onclick="applyStyle()">
+                    Yellow</label><br>
+                <label><input type="radio" name="backgroundColor" value="lightgray" onclick="applyStyle()"> Light
+                    Gray</label><br>
+                <label><input type="radio" name="backgroundColor" value="lightblue" onclick="applyStyle()"> Light
+                    Blue</label><br>
+            </td>
+            <td>
+                <label><input type="radio" name="textTransform" value="none" onclick="applyStyle()"> None</label><br>
+                <label><input type="radio" name="textTransform" value="uppercase" onclick="applyStyle()">
+                    Uppercase</label><br>
+                <label><input type="radio" name="textTransform" value="lowercase" onclick="applyStyle()">
+                    Lowercase</label><br>
+                <label><input type="radio" name="textTransform" value="capitalize" onclick="applyStyle()">
+                    Capitalize</label><br>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function applyStyle() {
+            const box = document.getElementById('contentBox');
+
+            const fontSize = document.querySelector('input[name="fontSize"]:checked')?.value;
+            if (fontSize) box.style.fontSize = fontSize;
+
+            const fontColor = document.querySelector('input[name="fontColor"]:checked')?.value;
+            if (fontColor) box.style.color = fontColor;
+
+            const textAlign = document.querySelector('input[name="textAlign"]:checked')?.value;
+            if (textAlign) box.style.textAlign = textAlign;
+
+            const fontStyle = document.querySelector('input[name="fontStyle"]:checked')?.value;
+            if (fontStyle) box.style.fontStyle = fontStyle;
+
+            const textDecoration = document.querySelector('input[name="textDecoration"]:checked')?.value;
+            if (textDecoration) box.style.textDecoration = textDecoration;
+
+            const fontWeight = document.querySelector('input[name="fontWeight"]:checked')?.value;
+            if (fontWeight) box.style.fontWeight = fontWeight;
+
+            const letterSpacing = document.querySelector('input[name="letterSpacing"]:checked')?.value;
+            if (letterSpacing) box.style.letterSpacing = letterSpacing;
+
+            const lineHeight = document.querySelector('input[name="lineHeight"]:checked')?.value;
+            if (lineHeight) box.style.lineHeight = lineHeight;
+
+            const backgroundColor = document.querySelector('input[name="backgroundColor"]:checked')?.value;
+            if (backgroundColor) box.style.backgroundColor = backgroundColor;
+
+            const textTransform = document.querySelector('input[name="textTransform"]:checked')?.value;
+            if (textTransform) box.style.textTransform = textTransform;
+        }
+    </script>
+</body>
+
+</html>

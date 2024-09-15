@@ -45,8 +45,8 @@
         </div>
         <div id="controlswrapper">
             <input type="button" value="Start" onclick="startshow();" id="startbtn" />
-            <input type="button" value="Next" onclick="nextimg();" />
-            <input type="button" value="Prev" onclick="previmg();" />
+            <input type="button" value="Next" onclick="nextimg();" / id="prev">
+            <input type="button" value="Prev" onclick="previmg();" / id="next">
             <input type="button" value="Stop" onclick="stopshow();" id="stopbtn" />
         </div>
     </div>
@@ -74,15 +74,19 @@
                 isRunning = true;
                 document.getElementById('startbtn').disabled = true;
                 document.getElementById('stopbtn').disabled = false;
+                document.getElementById('prev').disabled = true
+                document.getElementById('next').disabled = true
             }
         }
-
+        
         function stopshow() {
             if (isRunning) {
                 clearInterval(t);
                 isRunning = false;
                 document.getElementById('startbtn').disabled = false;
                 document.getElementById('stopbtn').disabled = true;
+                document.getElementById('prev').disabled = false
+                document.getElementById('next').disabled = false
             }
         }
     </script>

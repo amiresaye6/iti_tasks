@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        input#newsInput,
+        input#searchInput {
+            padding: 5px;
+            width: 80%;
+        }
+
+        button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        .type {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .search-bar {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>News Table Task</h1>
+
+    <div class="type">
+        <h2>News Type:</h2>
+        <label>
+            <input type="radio" name="newsType" value="Sports">
+            Sports
+        </label>
+        <label>
+            <input type="radio" name="newsType" value="Social">
+            Social
+        </label>
+        <label>
+            <input type="radio" name="newsType" value="Movies">
+            Movies
+        </label>
+    </div>
+
+    <div>
+        <input type="text" id="newsInput" placeholder="Enter news">
+        <button onclick="addNews()">Add News</button>
+    </div>
+
+    <table id="newsTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>News</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <button onclick="showRowCount()">Show Row Count</button>
+
+    <div class="search-bar">
+        <h2>Search News:</h2>
+        <input type="text" id="searchInput" placeholder="Search by news or type">
+        <button onclick="searchNews()">Search</button>
+    </div>
+
+    <script>
+        let newsCount = 0;
+
+        function addNews() {
+            const newsInput = document.getElementById('newsInput').value;
+            const selectedType = document.querySelector('input[name="newsType"]:checked');
+
+            if (newsInput.trim() === '') {
+                alert('Please enter some news!');
+                return;
+            }
+
+            if (!selectedType) {
+                alert('Please select a news type!');
+                return;
+            }
+
+            newsCount++;
+
+            const tableBody = document.querySelector('#newsTable tbody');
+            const newRow = tableBody.insertRow();
+
+            const noCell = newRow.insertCell(0);
+            const newsCell = newRow.insertCell(1);
+            const typeCell = newRow.insertCell(2);
+
+            noCell.textContent = newsCount;
+            newsCell.textContent = newsInput;
+            typeCell.textContent = selectedType.value;
+
+            document.getElementById('newsInput').value = '';
+            document.querySelector('input[name="newsType"]:checked').checked = false;
+        }
+
+        function showRowCount() {
+            const rowCount = document.querySelector('#newsTable tbody').rows.length;
+            alert(`Number of rows: ${rowCount}`);
+        }
+
+        function searchNews() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const tableRows = document.querySelectorAll('#newsTable tbody tr');
+
+            tableRows.forEach(row => {
+                const newsText = row.cells[1].textContent.toLowerCase();
+                const newsType = row.cells[2].textContent.toLowerCase();
+
+                if (newsText.includes(searchValue) || newsType.includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
