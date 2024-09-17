@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //... | rest | spread
+        // ... (rest) : if written in function declaration as parameter | another case in destruction with array object
+        //... rest : constrains : must be last formal parameter
+                    //: you can't write more than one rest for function
+            // rest inside function body will be an array object
+        //function docalculations(op) {
+        //    let result = 0;
+        //    switch (op) {
+        //        case "+":
+        //            for (var i = 1; i < arguments.length; i++) {
+        //                result += arguments[i];
+        //            }
+        //            break;
+        //        case "*":
+        //            result = 1;
+        //            for (var i = 1; i < arguments.length; i++) {
+        //                result *= arguments[i];
+        //            }
+        //            break;
+        //        default:
+        //    }
+        //    return result;
+        //}
+
+
+
+
+        //function docalculations(op) {
+        //    let result = 0;
+        //    let arr = [];
+        //    for (var x = 1; x < arguments.length; x++) {
+        //        arr.push(arguments[x]);
+        //    }
+        //    switch (op) {
+        //        case "+":
+        //            result = arr.reduce(function (p, c) { return p += c; });
+        //            break;
+        //        case "*":
+        //            result = arr.reduce(function (p, c) { return p *= c; });
+        //            break;
+        //        default:
+        //    }
+        //    return result;
+        //}
+
+
+
+
+
+        //function docalculations(op) {
+        //    let result = 0;
+        //    let arr = [];
+        //    for (var x = 1; x < arguments.length; x++) {
+        //        arr.push(arguments[x]);
+        //    }
+        //    return eval(arr.join(op));
+        //}
+
+
+        //function docalculations(op) {
+        //    let result = 0;
+        //   // let arr = [];
+        //    for (var x = 1; x < arguments.length; x++) {
+        //        arr.push(arguments[x]);
+        //    }
+        //    return eval(arr.join(op));
+        //}
+
+
+
+        //function docalculations(op,...hamada) {
+        //   /* let result = 0;*/
+        //   // let arr = [];
+        //    //for (var x = 1; x < arguments.length; x++) {
+        //    //    arr.push(arguments[x]);
+        //    //}
+        //    //console.log(hamada);
+        //    return eval(hamada.join(op));
+        //}
+
+        //let myarr = [10, 20, 30, 40, 50];
+        // ... : spread : in case call method accept rest with array object
+        // console.log(docalculations("+", 10, 20, 30, 40, 50));
+        //console.log(docalculations("+", ...myarr));
+
+        /*console.log(Math.min(...myarr));*/
+
+
+
+
+
+
+
+
+
+
+
+        // docalculation("+",10,20,30,40,50,60,70);
+        // docalculation("*",10,20,30);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

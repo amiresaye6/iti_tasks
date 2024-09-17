@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let nums = Array.from({ length: 10 }, () => Math.floor(Math.random() * 101));
+        let nums = [9, 37, 78, 9, 70, 52, 87, 39, 88, 21]
+        console.log("Array of 10 random numbers: ", nums)
+        console.log("sort the array in  descending order ", nums.sort((a, b) => a - b))
+        console.log("sort the array in  descending order ", nums.sort((a, b) => b - a))
+        console.log("Filter numbers larger than 50", nums.filter(value => value <= 50))
+        console.log("max value in the array: ", Math.max(...nums))
+        console.log("minimum value in the array: ", Math.min(...nums))
+
+    </script>
+</body>
+
+</html>

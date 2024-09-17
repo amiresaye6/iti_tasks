@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function calculate(operator, ...numbers) {
+            let result;
+            switch (operator) {
+                case 'sum':
+                    result = numbers.reduce((total, num) => total + num, 0);
+                    break;
+                case 'subtract':
+                    result = numbers.reduce((total, num) => total - num);
+                    break;
+                case 'multiply':
+                    result = numbers.reduce((total, num) => total * num, 1);
+                    break;
+                case 'divide':
+                    result = numbers.reduce((total, num) => total / num);
+                    break;
+                default:
+                    console.log('Invalid operator');
+                    return;
+            }
+            console.log(`result of ${operator} operation for ${numbers.join(',')} is ${result}`);
+        }
+
+        // Example
+        calculate('sum', 3, 1, 6, 3);
+        calculate('subtract', 3, 1, 6, 3);
+        calculate('multiply', 3, 1, 6, 3);
+        calculate('divide', 3, 1, 6, 3);
+    </script>
+</body>
+
+</html>

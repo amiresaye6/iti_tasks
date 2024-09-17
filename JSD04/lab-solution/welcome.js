@@ -11,6 +11,8 @@ window.onload = function() {
     const gender = getCookie('gender');
     const color = getCookie('color');
 
+    console.log(name, age, gender, color)
+
     // Determine the gender image URL
     const genderImage = gender === 'male'
         ? 'https://via.placeholder.com/50x50?text=M'

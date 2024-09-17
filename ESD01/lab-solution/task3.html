@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function createProject() {
+            const projectId = prompt("Enter project ID:");
+            const projectName = prompt("Enter project name:");
+            const duration = prompt("Enter project duration:");
+
+            const project = {
+                projectId,
+                projectName,
+                duration,
+                printData() {
+                    console.log(`Project ID: ${this.projectId}`);
+                    console.log(`Project Name: ${this.projectName}`);
+                    console.log(`Duration: ${this.duration}`);
+                }
+            };
+
+            project.printData();
+        }
+
+        // Example usage:
+        createProject();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 50%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 70%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) td {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #ffffff;
+        }
+
+        .crossed {
+            text-decoration: line-through;
+            color: grey;
+        }
+
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+
+        .done-col {
+            width: 20%;
+        }
+
+        .task-col {
+            width: 60%;
+        }
+
+        .delete-col {
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do Tasks</h1>
+
+        <div>
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <table id="taskTable">
+            <thead>
+                <tr>
+                    <th class="done-col">Done</th>
+                    <th class="task-col">Task</th>
+                    <th class="delete-col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="task5.js"></script>
+</body>
+</html>

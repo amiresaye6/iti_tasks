@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // arrow functions : lambda expression
+        // 1- declared as function expression 
+        // 2- not hoisted cause declared using let as expression
+        // 3- not contains arguments or this (bind to outer scoped this)
+        // 4- you can't use it as constructor function : you can't use it to create an instance using new keyword
+
+        // function statement 
+        //function myfun() {
+        //    return "HI";
+        //}
+        /*let myfun = function () { return "HI";}*/
+
+        /*let myfun =  ()=> { return "HI"; }*/
+
+        /*let myfun = () =>  "HI"; */
+        /*let sum = (a,b) => a+b;*/
+        //let sum = (a, b) => {
+        //    if (a > b)
+        //        return a + b;
+        //    else return b;
+        //};
+
+
+        /*let checkeven = (_val) => _val % 2 == 0;*/
+        /*let checkeven = _val => _val % 2 == 0;*/
+
+        /*let Student = function (_id, _name) { this.ID = _id; this.Name = _name };*/
+
+        //let Student = (_id, _name)=> { this.ID = _id; this.Name = _name };
+
+        //let std = Student(100, "Ahmed");
+        //let ID = -100;
+        //let obj = {
+        //    ID: 100,
+        //    Name: "Ali",
+        //    Print: function () { return this.ID + " : " + this.Name }
+        //}
+
+        //console.log( obj.Print());
+
+
+
+
+        
+        //let obj = {
+        //    ID: 100,
+        //    Name: "Ali",
+        //    Print:  ()=> { return this.ID + " : " + this.Name }
+        //}
+
+        //console.log(obj.Print());
+
+
+
+        //let myfun =   ()=>{
+
+        //    console.log(arguments);
+        //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        window.addEventListener('load', function () {
+            // this => window
+            this.document.getElementsByTagName('div')[0].addEventListener('click', function () {
+                //this=>div
+                document.getElementsByTagName('ul')[0].addEventListener('click', ()=> {
+                    //this=>ul
+                    let alllis = document.getElementsByTagName('li');
+                    for (let i = 0; i < alllis.length; i++) {
+                        alllis[i].addEventListener('click', ()=> {
+                            console.log(this.innerText);
+                            //this.li
+                        });//end of click for every li
+                    }
+
+
+                });//end of click on ul
+
+            });//end of div
+
+        });//end of load
+
+
+
+         
+    </script>
+    <style>        
+        div {
+            border:1px solid black;
+            padding:10px;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>Home</li>
+            <li>Contact</li>
+            <li>About</li>
+        </ul>
+        <p>hello p</p>
+    </div>
+</body>
+</html>
