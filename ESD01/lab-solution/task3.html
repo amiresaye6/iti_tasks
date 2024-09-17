@@ -4,31 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dynamic Object Creation</title>
 </head>
 
 <body>
     <script>
         function createProject() {
-            const projectId = prompt("Enter project ID:");
-            const projectName = prompt("Enter project name:");
-            const duration = prompt("Enter project duration:");
+            const project = {};
+            let addMore = true;
 
-            const project = {
-                projectId,
-                projectName,
-                duration,
-                printData() {
-                    console.log(`Project ID: ${this.projectId}`);
-                    console.log(`Project Name: ${this.projectName}`);
-                    console.log(`Duration: ${this.duration}`);
+            while (addMore) {
+                const key = prompt("Enter the key name (e.g., 'projectId', 'projectName', 'duration'):");
+                if (key) {
+                    const value = prompt(`Enter the value for '${key}':`);
+                    project[key] = value;
+
+                    addMore = confirm("Do you want to add another key-value pair?");
+                } else {
+                    alert("Key name cannot be empty.");
+                }
+            }
+
+            console.log("Project Object:", project);
+
+            project.printData = function() {
+                console.log("Project Details:");
+                for (const [key, value] of Object.entries(this)) {
+                    if (typeof value !== 'function') {
+                        console.log(`${key}: ${value}`);
+                    }
                 }
             };
 
             project.printData();
         }
 
-        // Example usage:
         createProject();
     </script>
 </body>

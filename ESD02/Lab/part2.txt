@@ -1,0 +1,2 @@
+1- create generator function to retrive new id for every call
+2- declare an iterable object ( which you can iterate over it using for of )

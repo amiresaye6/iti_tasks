@@ -84,14 +84,31 @@ const calculateScore = () => {
 const showResult = () => {
   const score = calculateScore();
   const totalDegree = examData.questions.reduce((acc, q) => acc + q.degree, 0);
-  document.getElementById("result").textContent = `Your total score is ${score} out of ${totalDegree}.`;
-  document.getElementById("timer").textContent = "00:00";
+  const resultMessage = `Your total score is ${score} out of ${totalDegree}.`;
+
+  // Open a new window and display the result
+  const resultWindow = window.open("", "Result", "width=400,height=300");
+  resultWindow.document.write(`
+    <html>
+    <head>
+      <title>Exam Result</title>
+      <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        h1 { color: #333; }
+      </style>
+    </head>
+    <body>
+      <h1>${resultMessage}</h1>
+    </body>
+    </html>
+  `);
+
   clearInterval(timerInterval);
+  resultWindow.document.close();
+};
 
-  // Disable all radio buttons after submitting
 
-}
-
+document.getElementById("studentName").textContent = sessionStorage.getItem("studentName");
 document.getElementById("examName").textContent = examData.examName;
 document.getElementById("examTitle").textContent = examData.examName + " Exam";
 
@@ -155,7 +172,6 @@ document.getElementById("submitBtn").addEventListener("click", function () {
   showResult();
   if (!supmitted) {
     supmitted = true;
-    alert("You have submitted the exam.");
   }
 });
 

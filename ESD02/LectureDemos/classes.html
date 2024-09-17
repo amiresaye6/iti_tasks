@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+   
+</head>
+<body>
+
+
+
+
+    <script>
+
+        class Person {
+            // fields : public or private
+            // if public : define it inside constructor : binided to  created objectusing this keyword
+            // private fields : declare it inside class scope  using #
+            #id = 1;
+            #name = "new person";
+            constructor(_id, _name) {
+                //this.ID = _id; //public
+                //this.Name = _name; // public
+                // private fields :
+                //this.#id = _id;
+                //this.#name = _name;
+                this.ID = _id;
+                this.Name = _name;
+            }
+            // instance method : callable using an object from this type
+            Print() {
+                return `ID = ${this.ID} , Name = ${this.Name}`;
+            }
+            // instance method
+            // type scoped method : static
+            static getIdentity() {
+                return "From Person Class";
+            }
+            //setID(_idval) {
+            //    if(_idval>0)
+            //    this.#id = _idval;
+            //}
+            //getID() {
+            //    return this.#id;
+            //}
+            //setName(_n) {
+            //    if (_n.trim().length >= 3)
+            //        this.#name = _n.trim();
+            //}
+            //getName() {
+            //    return this.#name;
+            //}
+            // properties :  use two accessors : set and get
+            get ID() {
+                return this.#id;
+            }
+            set ID(_idval) {
+                if (_idval > 0)
+                    this.#id = _idval;
+            }
+            set Name(_n) {
+                if (_n.trim().length >= 3)
+                    this.#name = _n.trim();
+            }
+            get Name() {
+                return this.#name;
+            }
+
+            toString() {
+                return this.Print();
+            }
+            valueOf() {
+                return this.ID;
+            }
+            // constructor : just one and only one constructor
+            //methods: methods : override for inherited method ,setters and getters
+            //properties : use accessor set or get
+            // instance members : accessible using inatnce from class ()object
+            // member : type member (static member) : use key word static
+
+        }//end of class declaratio
+
+        let pone = new Person(100, "Ahmed ");
+        let ptwo = new Person(200, "moustafa ");
+        //pone+ptwo;
+
+        //let pone = new Person(100, "Ahmed ");
+        document.write(pone);
+
+            //pone.setID(10);
+            //pone.setName("         Ahmed     ");
+            //console.log(pone.Print());
+            //pone.#id = -100;//set
+           // console.log(pone.#id);//get
+
+           // console.log(pone.Print());
+        /*Person(10, "hamada");*/
+    </script>
+</body>
+</html>

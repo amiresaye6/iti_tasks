@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        let Person= class  {
+            constructor(_id, _name) {
+                //if (this.constructor.name == "Person") throw new Error("abstract Class");
+                if (new.target.name == "Person") throw new Error("abstract Class");
+                console.log(new.target.name);
+                this.ID = _id;
+                this.Name = _name;
+            }
+            Print() {
+                return `ID = ${this.ID} , Name =  ${this.Name}`;
+            }
+        }
+        class Student extends Person {
+            constructor(_id, _name, _intake) {
+              //  console.log(new.target.name);
+                super(_id, _name);
+                //console.log(this.constructor.name);
+                this.Intake = _intake;
+            }
+            Print() {
+                return `${super.Print()}, Intake = ${this.Intake}`;
+            }
+        }
+
+
+      // let std = new Student(100, "Ahmed", 44);
+        let pone = new Person(100, "Ahmed");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

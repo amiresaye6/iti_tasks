@@ -13,7 +13,7 @@
             max-width: 500px;
             margin: 0 auto;
         }
-        .contaner {
+        .container {
             border: 1px solid #ccc;
             padding: 20px;
             border-radius: 5px;
@@ -38,20 +38,27 @@
             color: red;
             font-size: 0.875em;
         }
+        .success {
+            color: green;
+            font-size: 0.875em;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <form id="userForm">
-        <div class="contaner">
+        <div class="container">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">
-            <span id="nameError" class="error"></span>
+            <span id="nameError" class="error hidden"></span>
             
             <label for="country">Country:</label>
             <select id="country" name="country">
                 <option value="">Select a country</option>
-                <option value="US" data-zipcode="12345">Egypt</option>
-                <option value="CA" data-zipcode="A1A 1A1">England</option>
+                <option value="EG" data-zipcode="12345">Egypt</option>
+                <option value="UK" data-zipcode="A1A 1A1">England</option>
             </select>
             
             <label for="zip">Zip Code:</label>
@@ -59,13 +66,16 @@
             
             <label for="email">E-Mail:</label>
             <input type="email" id="email" name="email">
-            <span id="emailError" class="error"></span>
+            <span id="emailError" class="error hidden"></span>
             
             <label for="hobbies">Hobbies:</label>
             <input type="checkbox" id="reading" name="hobbies" value="Reading"> Reading
             <input type="checkbox" id="swimming" name="hobbies" value="Swimming"> Swimming
             <input type="checkbox" id="sleeping" name="hobbies" value="Sleeping"> Sleeping
-            
+            <span id="hobbyError" class="error hidden"></span>
+
+            <div id="successMessage" class="success hidden">Form submitted successfully!</div>
+
             <button type="submit">Submit</button>
             <button type="button" id="clearButton">Clear</button>
         </div>
@@ -80,8 +90,32 @@
             const hobbies = document.querySelectorAll('input[name="hobbies"]');
             const clearButton = document.getElementById('clearButton');
             const form = document.getElementById('userForm');
+            const successMessage = document.getElementById('successMessage');
 
-            nameInput.focus();
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const hobbyError = document.getElementById('hobbyError');
+
+            nameInput.addEventListener('input', () => {
+                if (nameInput.value.trim() === '') {
+                    nameError.textContent = 'Please enter your name.';
+                    nameError.classList.remove('hidden');
+                } else {
+                    nameError.textContent = '';
+                    nameError.classList.add('hidden');
+                }
+            });
+
+            emailInput.addEventListener('input', () => {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value.trim())) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                    emailError.classList.remove('hidden');
+                } else {
+                    emailError.textContent = '';
+                    emailError.classList.add('hidden');
+                }
+            });
 
             countrySelect.addEventListener('change', (event) => {
                 const selectedOption = event.target.options[event.target.selectedIndex];
@@ -92,27 +126,41 @@
                 let valid = true;
 
                 if (nameInput.value.trim() === '') {
-                    document.getElementById('nameError').textContent = 'Please enter your name.';
+                    nameError.textContent = 'Please enter your name.';
+                    nameError.classList.remove('hidden');
                     valid = false;
+                    nameInput.focus();
                 } else {
-                    document.getElementById('nameError').textContent = '';
+                    nameError.textContent = '';
+                    nameError.classList.add('hidden');
                 }
 
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailPattern.test(emailInput.value.trim())) {
-                    document.getElementById('emailError').textContent = 'Please enter a valid email address.';
+                    emailError.textContent = 'Please enter a valid email address.';
+                    emailError.classList.remove('hidden');
                     valid = false;
+                    emailInput.focus();
                 } else {
-                    document.getElementById('emailError').textContent = '';
+                    emailError.textContent = '';
+                    emailError.classList.add('hidden');
                 }
 
                 const atLeastOneHobbySelected = Array.from(hobbies).some(hobby => hobby.checked);
                 if (!atLeastOneHobbySelected) {
-                    alert('Please select at least one hobby.');
+                    hobbyError.textContent = 'Please select at least one hobby.';
+                    hobbyError.classList.remove('hidden');
                     valid = false;
+                } else {
+                    hobbyError.textContent = '';
+                    hobbyError.classList.add('hidden');
                 }
 
                 if (!valid) {
+                    event.preventDefault();
+                } else {
+                    successMessage.textContent = 'Form submitted successfully!';
+                    successMessage.classList.remove('hidden');
                     event.preventDefault();
                 }
             });
@@ -121,6 +169,10 @@
                 if (confirm('Are you sure you want to clear the form?')) {
                     form.reset();
                     zipInput.value = '';
+                    nameError.classList.add('hidden');
+                    emailError.classList.add('hidden');
+                    hobbyError.classList.add('hidden');
+                    successMessage.classList.add('hidden');
                 }
             });
         });

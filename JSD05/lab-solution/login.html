@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.875em;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="userForm">
+        <div class="container">
+            <label for="name">Username</label>
+            <input type="text" id="name" name="name" placeholder="Enter your username">
+            <span id="nameError" class="error"></span>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+            <span id="passwordError" class="error"></span>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password">
+            <span id="confirmPasswordError" class="error"></span>
+            <br>
+            <button type="submit">Submit</button>
+            <button type="button" id="clearButton">Clear</button>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameInput = document.getElementById('name');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const clearButton = document.getElementById('clearButton');
+            const form = document.getElementById('userForm');
+
+            nameInput.focus();
+
+            nameInput.addEventListener('input', () => {
+                document.getElementById('nameError').textContent = '';
+            });
+
+            passwordInput.addEventListener('input', () => {
+                document.getElementById('passwordError').textContent = '';
+            });
+
+            confirmPasswordInput.addEventListener('input', () => {
+                document.getElementById('confirmPasswordError').textContent = '';
+            });
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                let valid = true;
+
+                if (nameInput.value.trim() === '') {
+                    document.getElementById('nameError').textContent = 'Please enter your username.';
+                    valid = false;
+                } else {
+                    document.getElementById('nameError').textContent = '';
+                }
+
+
+                const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                if (!passwordPattern.test(passwordInput.value.trim())) {
+                    document.getElementById('passwordError').textContent = 'Password must be at least 8 characters, including 1 letter and 1 number.';
+                    valid = false;
+                } else {
+                    document.getElementById('passwordError').textContent = '';
+                }
+
+                if (passwordInput.value.trim() !== confirmPasswordInput.value.trim()) {
+                    document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+                    valid = false;
+                } else {
+                    document.getElementById('confirmPasswordError').textContent = '';
+                }
+
+                if (valid) {
+                    localStorage.setItem('username', nameInput.value.trim());
+                    localStorage.setItem('password', passwordInput.value.trim());
+                    sessionStorage.setItem('studentName', nameInput.value.trim());
+                    alert('Credentials saved successfully!');
+                    window.location.href = 'task4.html';
+                }
+
+            });
+
+            clearButton.addEventListener('click', () => {
+                if (confirm('Are you sure you want to clear the form?')) {
+                    form.reset();
+                    document.getElementById('nameError').textContent = '';
+                    document.getElementById('passwordError').textContent = '';
+                    document.getElementById('confirmPasswordError').textContent = '';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
