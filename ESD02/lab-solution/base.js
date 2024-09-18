@@ -1,4 +1,3 @@
-// base.js
 import { Rectangle, Square } from './SquaresModule.js';
 import { Circle } from './CircleModule.js';
 

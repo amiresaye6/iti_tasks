@@ -1,4 +1,3 @@
-// SquaresModule.js
 import { Shape } from './shapeModule.js';
 
 class Rectangle extends Shape {

@@ -1,6 +1,6 @@
 function* generateId() {
     let id = 1;
-    while (true) {
+    while (id <= 10) {
         yield id++;
     }
 }
@@ -22,7 +22,7 @@ const iterableObject = {
     }
 }
 
-export { 
+export {
     generateId,
     iterableObject
 };

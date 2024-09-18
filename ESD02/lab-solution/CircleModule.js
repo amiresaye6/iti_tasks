@@ -1,4 +1,3 @@
-// CircleModule.js
 import { Shape } from './shapeModule.js';
 
 class Circle extends Shape {

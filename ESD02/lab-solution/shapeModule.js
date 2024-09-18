@@ -1,4 +1,3 @@
-// shapeModule.js
 class Shape {
     #color;
 

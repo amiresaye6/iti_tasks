@@ -12,16 +12,20 @@
         function createProject() {
             const project = {};
             let addMore = true;
+            const keyPattern = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/;
 
             while (addMore) {
                 const key = prompt("Enter the key name (e.g., 'projectId', 'projectName', 'duration'):");
-                if (key) {
+                if (key && keyPattern.test(key)) {
                     const value = prompt(`Enter the value for '${key}':`);
-                    project[key] = value;
-
+                    if (value) {
+                        project[key] = value;
+                    } else {
+                        alert("Value cannot be empty.");
+                    }
                     addMore = confirm("Do you want to add another key-value pair?");
                 } else {
-                    alert("Key name cannot be empty.");
+                    alert("Invalid key name. Key must start with a letter, $, or _ and contain only alphanumeric characters.");
                 }
             }
 
