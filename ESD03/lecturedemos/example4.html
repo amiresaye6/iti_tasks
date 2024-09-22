@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // callback hell
+        //nasr
+        function getAllStudents(callback = (stdarr, callback = (deptarr, callback = (mgrarr)=> {
+            console.log("From displayManagers");
+            mgrarr.forEach(function (mgrname) {
+                console.log(`Manager Name = ${mgrname}`);
+            });
+        })=> {
+            setTimeout(function () {
+                console.log("From displayDepartments");
+                let mgrarr = [];
+                deptarr.forEach(function (dept) {
+                    console.log(`Dept ID = ${dept.deptID} , Name = ${dept.deptName}`);
+                    mgrarr.push(dept.deptMgr);
+
+                });
+                //return mgrarr;
+                //displayManagers(mgrarr);
+                callback(mgrarr);
+            }, 2000);
+        })=> {
+            setTimeout(function () {
+                console.log("From printAllStudents");
+                stdarr.forEach(function (std) { console.log(`ID = ${std.ID} , Name = ${std.Name}`); });
+                let deptarr = [{ deptID: 1000, deptName: "PD", deptMgr: "Managerone" },
+                { deptID: 2000, deptName: "OS", deptMgr: "Managertwo" },
+                { deptID: 3000, deptName: "AI", deptMgr: "Managerthree" }
+                ];
+                // return deptarr;
+                //displayDepartments(deptarr);
+                callback(deptarr);
+            }, 2000);
+        }) {
+            setTimeout(function () {
+                console.log("From getAllStudents");
+                let stdarr = [{ ID: 10, Name: "Ahmed" }, { ID: 20, Name: "Mohamed" }, { ID: 30, Name: "Ali" }];
+                //return stdarr;
+                //printAllStudents(stdarr);
+                callback(stdarr);
+            }, 2000);
+
+        }
+
+
+
+
+
+
+        //abdelrahman
+        //function printAllStudents(stdarr,callback) {
+        //    setTimeout(function () {
+        //        console.log("From printAllStudents");
+        //        stdarr.forEach(function (std) { console.log(`ID = ${std.ID} , Name = ${std.Name}`); });
+        //        let deptarr = [{ deptID: 1000, deptName: "PD", deptMgr: "Managerone" },
+        //        { deptID: 2000, deptName: "OS", deptMgr: "Managertwo" },
+        //        { deptID: 3000, deptName: "AI", deptMgr: "Managerthree" }
+        //        ];
+        //       // return deptarr;
+        //        //displayDepartments(deptarr);
+        //        callback(deptarr, displayManagers);
+        //    }, 2000);
+        //}
+        //amr
+        //function displayDepartments(deptarr,callback) {
+        //    setTimeout(function () {
+        //        console.log("From displayDepartments");
+        //        let mgrarr = [];
+        //        deptarr.forEach(function (dept) {
+        //            console.log(`Dept ID = ${dept.deptID} , Name = ${dept.deptName}`);
+        //            mgrarr.push(dept.deptMgr);
+
+        //        });
+        //        //return mgrarr;
+        //        //displayManagers(mgrarr);
+        //        callback(mgrarr);
+        //    }, 2000);
+        //}
+        //mariam
+        //function displayManagers(mgrarr) {
+        //    console.log("From displayManagers");
+        //    mgrarr.forEach(function (mgrname) {
+        //        console.log(`Manager Name = ${mgrname}`);
+        //    });
+        //}
+
+
+        //run : omar
+        //function myfun(testarr) {
+        //    console.log("From MyFun");
+        //    console.log(testarr);
+        //}
+        //getAllStudents(myfun);
+        getAllStudents();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

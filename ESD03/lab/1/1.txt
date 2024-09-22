@@ -1,0 +1,1 @@
+use json placeholder API end point which return 10 users then display users names as shown in pic then on click on any name you will fetch clicked user details in bottom div
