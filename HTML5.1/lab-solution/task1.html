@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skewed Container with Scroll</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+
+<body>
+    <div class="skew-container">
+        <div class="text-content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad facere iusto, rerum dignissimos
+                debitis sunt totam, sapiente reiciendis quia minima aut deleniti dolor qui, quidem maiores velit
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad facere iusto, rerum dignissimos
+                debitis sunt totam, sapiente reiciendis quia minima aut deleniti dolor qui, quidem maiores velit
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad facere iusto, rerum dignissimos
+                debitis sunt totam, sapiente reiciendis quia minima aut deleniti dolor qui, quidem maiores velit
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad facere iusto, rerum dignissimos
+                debitis sunt totam, sapiente reiciendis quia minima aut deleniti dolor qui, quidem maiores velit
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad facere iusto, rerum dignissimos
+                debitis sunt totam, sapiente reiciendis quia minima aut deleniti dolor qui, quidem maiores velit
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad facere iusto, rerum dignissimos
+                debitis sunt totam, sapiente reiciendis quia minima aut deleniti dolor qui, quidem maiores velit
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ad facere iusto, rerum dignissimos
+                debitis sunt totam, sapiente reiciendis quia minima aut deleniti dolor qui, quidem maiores velit
+            </p>
+        </div>
+        <div class="image-grid">
+            <img src="./assets/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai.jpg"
+                alt="Image 1">
+            <img src="./assets/bermuda-triangle-mystery-event.jpg" alt="Image 2">
+            <img src="./assets/nature-landscape-with-black-sand-beach.jpg" alt="Image 3">
+            <img src="./assets/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai.jpg"
+                alt="Image 4">
+            <img src="./assets/bermuda-triangle-mystery-event.jpg" alt="Image 5">
+            <img src="./assets/nature-landscape-with-black-sand-beach.jpg" alt="Image 6">
+            <img src="./assets/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai.jpg"
+                alt="Image 7">
+            <img src="./assets/bermuda-triangle-mystery-event.jpg" alt="Image 8">
+            <img src="./assets/nature-landscape-with-black-sand-beach.jpg" alt="Image 9">
+            <img src="./assets/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai.jpg"
+                alt="Image 10">
+            <img src="./assets/bermuda-triangle-mystery-event.jpg" alt="Image 11">
+            <img src="./assets/nature-landscape-with-black-sand-beach.jpg" alt="Image 12">
+        </div>
+    </div>
+    <script>
+        const images = document.querySelectorAll('.image-grid img');
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                if (window.innerWidth > 750) {
+                    image.classList.toggle('active');
+                } else {
+                    image.classList.toggle('active');
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            images.forEach(image => {
+                if (window.innerWidth <= 750) {
+                    image.classList.remove('active');
+                }
+            });
+        });
+
+        const skewContainer = document.querySelector('.skew-container');
+
+        skewContainer.addEventListener('click', (event) => {
+            if (event.target === skewContainer) {
+                skewContainer.classList.toggle('active');
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
