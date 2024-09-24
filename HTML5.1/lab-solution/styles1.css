@@ -7,7 +7,7 @@
 
 body {
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #e0f7fa;
 }
 
 .skew-container {
@@ -17,45 +17,50 @@ body {
     width: 80%;
     height: 500px;
     margin: 50px auto;
-    background-color: white;
-    border: 2px solid black;
+    background-color: #00695d;
+    border: 2px solid #66bb6a;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 40px 40px rgba(102, 187, 106, 0.5);
     transition: transform 0.4s ease;
 }
 
 .skew-container:hover {
     transform: skew(-10deg);
 }
+
 .skew-container.active {
     transform: scale(0.5);
 }
-
 
 .text-content {
     flex: 1;
     padding: 20px;
     overflow-x: auto;
     width: 30%;
-    border-left: 2px solid black;
-    border: 2px solid black;
+    border-left: 2px solid #42a5f5;
+    border: 2px solid #42a5f5;
+    background-color: #bbdefb;
     max-height: 100%;
     transition: transform 0.4s ease;
     transform: skew(0deg);
     display: flex;
     flex-direction: row;
+    margin-right: 20px;
+    box-shadow: 0 0 20px 0 rgb(255, 187, 0);
 }
 
 .text-content p {
     width: 33%;
-    border-right: 1px solid black;
+    border-right: 1px solid #ff4500;
     padding: 15px;
     margin-right: 10px;
     text-align: left;
     font-size: 18px;
     line-height: 1.5;
     color: #333;
-    font-size: 10px
+    font-size: 10px;
+    /* box-shadow: 0 0 20px 0 rgb(251, 0, 255); */
+
 }
 
 .image-grid {
@@ -66,8 +71,10 @@ body {
     padding: 20px;
     overflow-y: auto;
     transition: transform 0.4s ease;
-    border-right: 2px solid black;
-    border: 2px solid black;
+    border-right: 2px solid #66bb6a;
+    border: 2px solid #66bb6a;
+    box-shadow: 0 0 20px 0 rgb(251, 0, 255);
+    background-color: #fff59d;
     align-items: center;
     transform: skew(0deg);
 }
@@ -76,7 +83,8 @@ body {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border: 2px solid black;
+    border: 2px solid #ffab40;
+    box-shadow: 0 0 20px 0 rgba(255, 16, 16, 0.9);
     transition: transform 0.3s ease;
 }
 
@@ -111,7 +119,7 @@ body {
     }
 
     .image-grid img.active {
-        border: 5px dashed black;
+        border: 5px dashed #ff1493;
     }
 }
 
