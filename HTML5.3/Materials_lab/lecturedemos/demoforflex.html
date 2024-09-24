@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+        }
+        ul{
+            
+            display:flex;
+            min-height:10vh;
+            justify-content:space-evenly;
+            align-items:center;
+        }
+        ul>li{
+            list-style:none;
+        }
+        ul>li>a{
+            text-decoration:none;
+            color:rgb(185 14 14);
+        }
+        ul>li>a:hover{
+            color:rgb(157 149 149);
+        }
+        .intro{
+            background-image:url(images/laptop_top.jpg);
+            background-size:cover;
+            background-position:center;
+            height:90vh;
+            color:white;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+        }
+        .intro>h4{
+            margin:1rem 0;
+        }
+        .intro>button{
+            padding:1rem 2rem;
+            background-image:linear-gradient(to left,transparent,rgb(75 157 235))
+        }
+            .intro > button:hover {
+                background-image: linear-gradient(to right,transparent,rgb(75 157 235))
+            }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+    </ul>
+    <section class="intro">
+        <h4>Summer Training Camp </h4>
+        <button>Register</button>
+    </section>
+</body>
+</html>

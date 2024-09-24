@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding: 20px;
+    background-color: #e0f7fa;
+}
+
+.skew-container {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 500px;
+    margin: 50px auto;
+    background-color: #00695d;
+    border: 2px solid #66bb6a;
+    overflow: hidden;
+    box-shadow: 0 40px 40px rgba(102, 187, 106, 0.5);
+    transition: transform 0.4s ease;
+}
+
+.skew-container:hover {
+    transform: skew(-10deg);
+}
+
+.skew-container.active {
+    transform: scale(0.5);
+}
+
+.text-content {
+    flex: 1;
+    padding: 20px;
+    overflow-x: auto;
+    width: 30%;
+    border-left: 2px solid #42a5f5;
+    border: 2px solid #42a5f5;
+    background-color: #bbdefb;
+    max-height: 100%;
+    transition: transform 0.4s ease;
+    transform: skew(0deg);
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+    box-shadow: 0 0 20px 0 rgb(255, 187, 0);
+}
+
+.text-content p {
+    width: 33%;
+    border-right: 1px solid #ff4500;
+    padding: 15px;
+    margin-right: 10px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+    font-size: 10px;
+
+}
+
+.image-grid {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.4s ease;
+    border-right: 2px solid #66bb6a;
+    border: 2px solid #66bb6a;
+    box-shadow: 0 0 20px 0 rgb(251, 0, 255);
+    background-color: #fff59d;
+    align-items: center;
+    transform: skew(0deg);
+}
+
+.image-grid img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #ffab40;
+    box-shadow: 0 0 20px 0 rgba(255, 16, 16, 0.9);
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.2);
+}
+
+.image-grid img.active {
+    z-index: 10;
+    transform: scale(2);
+}
+
+@media (max-width: 1024px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 750px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image-grid img {
+        transform: rotate(30deg);
+        transition: transform 0.3s ease;
+        margin: 20px 0;
+    }
+
+    .image-grid img:hover {
+        transform: rotate(0deg);
+    }
+
+    .image-grid img.active {
+        border: 5px dashed #ff1493;
+    }
+}
+
+@media (max-width: 600px) {
+    .text-content p {
+        font-size: 16px;
+    }
+}

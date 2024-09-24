@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+        }
+        section{
+            border:1px solid black;
+        }
+        #mainwrapper{
+            width:80vw;
+            height:80vh;
+            padding:5px;
+            display:flex;
+            margin:20px auto;
+        }
+        #mainwrapper>section{
+            width:200px;
+            margin:10px;
+        }
+        #videowrapper{
+            flex-grow:1;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        details{
+            padding:10px 0;
+            margin:10px 2px;
+            border:1px solid black;
+        }
+        summary{
+            font-weight:bold;
+        }
+        details:nth-child(odd){
+            background-color:lightgray;
+        }
+            details:nth-child(even) {
+                background-color: lightblue;
+            }
+            input[type=button]{
+                width:70px;
+                padding:10px;
+                font-weight:bold;
+                border-radius:10px;
+            }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            myvideo = this.document.getElementById('myvideo');
+
+        });//end of load
+        function playpausefun(e) {
+            if (myvideo.paused) {
+                myvideo.play();
+                e.target.value = "Pause";
+            } else {
+                myvideo.pause();
+                e.target.value = "Play";
+            }
+        }
+        function changemediasize(e) {
+            switch (e.target.value) {
+                case "small":
+                    myvideo.width = myvideo.height = 300;
+                    break;
+                case "medium":
+                    myvideo.width = myvideo.height = 400;
+                    break;
+                case "large":
+                    myvideo.width = myvideo.height = 500;
+                    break;
+                case "fullscreen":
+                    myvideo.requestFullscreen();
+                    break;
+
+                default:
+            }
+        }
+        function changevolume(e) {
+            myvideo.volume = e.target.value;
+        }
+        function mutevideo() {
+            if (myvideo.muted) {
+                myvideo.muted = false;
+            } else {
+                myvideo.muted = true;
+            }
+        }
+        function loopvideo() {
+            if (myvideo.loop) {
+                myvideo.loop = false;
+            } else {
+                myvideo.loop = true;
+            }
+        }
+        function changeseekbar(e) {
+            // currentTime = duration * range value /max; |
+            myvideo.currentTime = myvideo.duration * e.target.value / 100;
+        }
+        function forwardfun() {
+            myvideo.playbackRate++;
+
+        }
+        function backwardfun() {
+            myvideo.playbackRate--;
+            if (myvideo.playbackRate <= 0) myvideo.playbackRate = 1;
+        }
+    </script>
+
+</head>
+<body>
+    <section id="mainwrapper">
+        <section id="controlswrapper">
+            <details>
+                <summary>Play | Pause</summary>
+                <input type="button" value="Play" onclick="playpausefun(event);" />
+            </details>
+            <details>
+                <summary>Media Size</summary>
+                <select onchange="changemediasize(event);">
+                    <option>Select Media Size</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                    <option value="screen">FullScreen</option>
+                </select>
+            </details>
+            <details>
+                <summary>Volume</summary>
+                <input type="range" min="0" max="1" step="0.1" value="0.5" onchange="changevolume(event);" />
+            </details>
+            <details>
+                <summary>Mute | Loop</summary>
+                <input type="checkbox" onchange="mutevideo();" /> Mute <br />
+                <input type="checkbox" onchange="loopvideo();" /> Loop
+            </details>
+            <details>
+                <summary>SeekBar</summary>
+                <input type="range" min="0" max="100" step="any" value="0" id="seekbar" onchange="changeseekbar(event);"/>
+            </details>
+            <details>
+                <summary>>> | <<</summary>
+                <input type="button" value=">>" onclick="forwardfun();" />
+                <input type="button" value="<<" onclick="backwardfun();" />
+            </details>
+        </section>
+        <section id="videowrapper">
+            <video src="Video/universe.mp4" id="myvideo" width="400" height="400" />
+        </section>
+    </section>
+</body>
+</html>

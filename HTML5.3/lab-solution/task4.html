@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>task4 Calculator Layout</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            border: 2px solid black;
+            box-shadow: inset 0 0 30px 10px tomato;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .header button {
+            margin: 0 10px;
+            padding: 10px 15px;
+            border: none;
+            background-color: tomato;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .header button:hover {
+            background-color: darkred;
+        }
+
+        .calc-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .calc-section {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid tomato;
+            border-radius: 10px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+            margin: 0 10px; /* Space between sections */
+        }
+
+        .calc-section h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .calc-section input {
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid tomato;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.5em;
+            color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Calculator</h1>
+        </div>
+        <div class="calc-container">
+            <div class="calc-section">
+                <h3>Addition</h3>
+                <input type="number" id="add1" placeholder="0" oninput="calculateAddition();" />
+                <span>+</span>
+                <input type="number" id="add2" placeholder="0" oninput="calculateAddition();" />
+                <span>=</span>
+                <span id="addResult" class="result">0</span>
+            </div>
+            <div class="calc-section">
+                <h3>Multiplication</h3>
+                <input type="number" id="mul1" placeholder="0" oninput="calculateMultiplication();" />
+                <span>*</span>
+                <input type="number" id="mul2" placeholder="0" oninput="calculateMultiplication();" />
+                <span>=</span>
+                <span id="mulResult" class="result">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateAddition() {
+            const add1 = parseFloat(document.getElementById('add1').value) || 0;
+            const add2 = parseFloat(document.getElementById('add2').value) || 0;
+            const sum = add1 + add2;
+            document.getElementById('addResult').innerText = sum;
+        }
+
+        function calculateMultiplication() {
+            const mul1 = parseFloat(document.getElementById('mul1').value) || 0;
+            const mul2 = parseFloat(document.getElementById('mul2').value) || 0;
+            const product = mul1 * mul2;
+            document.getElementById('mulResult').innerText = product;
+        }
+    </script>
+</body>
+
+</html>

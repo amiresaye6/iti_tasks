@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task 4</title>
+    <link rel="stylesheet" href="task4.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">ITI LOCATIONS</h1>
+        <p>ITI MAIN LOCATIONS OVER THE COUNTRY</p>
+    </header>
+    <section class="body">
+        <div class="map">
+            <img src="map.png" alt="mansura branches map">
+        </div>
+        <div class="branchesSection">
+            <div class="navButtons">
+                <button id="prevBtn">⬅️</button>
+                <button id="nextBtn">➡️</button>
+            </div>
+            <div class="branchesContaner" id="branchesContainer">
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="mainBranch">ITI Smart Village</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Alexandria</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Mansoura</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Assiut</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Ismailia</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Zagazig</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Sohag</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Aswan</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Qena</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Minya</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Port Said</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Suez</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Tanta</h1>
+                </div>
+                <div class="locationCard">
+                    <img src="location.png" alt="location icon">
+                    <h1 class="branch">ITI Beni Suef</h1>
+                </div>
+            </div>
+            <div class="flags">
+                <div class="redFlag">
+                    <div></div>
+                    <p>Main Branch</p>
+                </div>
+                <div class="blueFlag">
+                    <div></div>
+                    <p>Main Branch</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footerContent">
+            <div class="contactInfo">
+                <h3>Contact Us</h3>
+                <p>Location: ITI, Egypt</p>
+                <p>Phone: +20 123 456 7890</p>
+                <p>Email: info@iti.gov.eg</p>
+            </div>
+            <div class="socialMedia">
+                <h3>Follow Us</h3>
+                <a href="https://facebook.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                        alt="Facebook" width="30">
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter"
+                        width="30">
+                </a>
+                <a href="https://linkedin.com" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                        alt="LinkedIn" width="30">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        const locations = document.querySelectorAll('.locationCard');
+        const container = document.getElementById('branchesContainer');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let startIndex = 0;
+        const itemsPerPage = 8;
+
+        function showLocations() {
+            container.innerHTML = '';
+            for (let i = startIndex; i < Math.min(startIndex + itemsPerPage, locations.length); i++) {
+                container.appendChild(locations[i]);
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (startIndex + itemsPerPage < locations.length) {
+                startIndex += itemsPerPage;
+                showLocations();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (startIndex - itemsPerPage >= 0) {
+                startIndex -= itemsPerPage;
+                showLocations();
+            }
+        });
+
+        showLocations();
+    </script>
+</body>
+
+</html>

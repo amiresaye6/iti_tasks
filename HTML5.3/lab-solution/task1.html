@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task 1</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            height: 80%;
+            box-shadow: inset 0 0 30px 10px tomato;
+            padding: 40px;
+            border: 5px solid black;
+            border-radius: 20px;
+            gap: 20px;
+
+        }
+
+        .sidebar {
+            width: 20%;
+            height: 90%;
+            padding: 20px 0;
+            overflow-y: scroll;
+            background-color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            border:  5px solid black;
+            border-radius: 20px;
+            box-shadow: inset 0 0 30px 10px tomato;
+
+        }
+
+        .sidebar:hover {
+            background-color: darkorange;
+        }
+
+        .button {
+            margin: 20px 0;
+            padding: 10px;
+            width: 80%;
+            text-align: center;
+            background-color: tomato;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.6s ease;
+        }
+
+        .button:hover {
+            transform: rotate(360deg);
+            background-color: yellowgreen;
+        }
+
+        .button.active {
+            background-color: rgb(130, 72, 0);
+            transform: scale(1.1);
+        }
+
+        .mainSection {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            position: relative;
+            border: 5px solid black;
+            border-radius: 20px;
+            box-shadow: inset 0 0 30px 10px tomato;
+
+        }
+
+        video {
+            width: 80%;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: inset 0 0 30px 10px tomato;
+
+        }
+
+        video:hover {
+            transform: scale(1.25);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <button class="button" onclick="showVideo(1)">Video 1</button>
+            <button class="button" onclick="showVideo(2)">Video 2</button>
+            <button class="button" onclick="showVideo(3)">Video 3</button>
+            <button class="button" onclick="showVideo(4)">Video 4</button>
+            <button class="button" onclick="showVideo(5)">Video 5</button>
+            <button class="button" onclick="showVideo(6)">Video 6</button>
+            <button class="button" onclick="showVideo(7)">Video 7</button>
+            <button class="button" onclick="showVideo(8)">Video 8</button>
+            <button class="button" onclick="showVideo(9)">Video 9</button>
+            <button class="button" onclick="showVideo(10)">Video 10</button>
+            <button class="button" onclick="showVideo(11)">Video 11</button>
+            <button class="button" onclick="showVideo(12)">Video 12</button>
+            <button class="button" onclick="showVideo(13)">Video 13</button>
+            <button class="button" onclick="showVideo(14)">Video 14</button>
+            <button class="button" onclick="showVideo(15)">Video 15</button>
+        </div>
+        <div class="mainSection">
+            <video id="videoPlayer">
+                <source id="videoSource" src="../Materials_lab/lecturedemos/Video/universe.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.button');
+        let currentIndex = 0;
+
+        function showVideo(videoNumber) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoSource = document.getElementById('videoSource');
+            videoSource.src = `../Materials_lab/lecturedemos/Video/universe.mp4`;
+            /*videoSource.src = `video${videoNumber}.mp4`; */
+            console.log(`video number : ${videoNumber} is playeing`);
+            videoPlayer.load();
+        }
+
+        function updateActiveButton() {
+            buttons.forEach((button, index) => {
+                if (index === currentIndex) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowDown') {
+                currentIndex = (currentIndex + 1) % buttons.length;
+                updateActiveButton();
+            } else if (event.key === 'ArrowUp') {
+                currentIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+                updateActiveButton();
+            } else if (event.key === 'Enter') {
+                buttons[currentIndex].click();
+            }
+        });
+
+        const videoElement = document.getElementById('videoPlayer');
+        videoElement.addEventListener('click', () => {
+            if (videoElement.paused) {
+                videoElement.play();
+            } else {
+                videoElement.pause();
+            }
+        });
+
+        videoElement.addEventListener('dblclick', () => {
+            if (videoElement.requestFullscreen) {
+                videoElement.requestFullscreen();
+            }
+        });
+
+        updateActiveButton();
+    </script>
+</body>
+
+</html>

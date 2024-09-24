@@ -1,0 +1,183 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    padding: 20px 40px;
+}
+
+.logo {
+    font-size: 50px;
+    font-weight: 500;
+    color: tomato;
+}
+
+header p {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map img {
+    width: 100%;
+    height: auto;
+}
+
+.branchesSection {
+    width: 70%;
+    position: relative;
+}
+
+.branchesContaner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.locationCard {
+    width: 35%;
+    height: 100px;
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.locationCard img {
+    width: 25px;
+    height: auto;
+}
+
+.navButtons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.navButtons button {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.mainBranch {
+    color: tomato;
+}
+
+.branch {
+    color: lightblue;
+}
+
+.flags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.redFlag, .blueFlag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.redFlag div {
+    background-color: tomato;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+.blueFlag div {
+    background-color: lightblue;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+}
+
+/* Footer Section Style */
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contactInfo, .socialMedia {
+    flex: 1;
+}
+
+.contactInfo h3, .socialMedia h3 {
+    margin-bottom: 10px;
+}
+
+.socialMedia a {
+    margin-right: 10px;
+}
+
+.socialMedia img {
+    width: 30px;
+    height: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .branchesSection {
+        width: 90%;
+    }
+
+    .locationCard {
+        width: 80%;
+    }
+
+    .navButtons {
+        top: 5px;
+        right: 5px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footerContent {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contactInfo, .socialMedia {
+        flex: unset;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .socialMedia img {
+        width: 25px;
+    }
+}

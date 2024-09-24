@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+        }
+        section{
+            border:1px solid black;
+        }
+        #mainwrapper{
+            /*parent*/
+            width:100vw;
+            height:80vh;
+            display:flex;
+            /*flex-direction:row;*/
+            /* default : display flex with parent : orient childrens in horizontal direction (row)*/
+            /*justify-content:flex-start :  if flex-direction : row : align horizontal using justify-content else vertical align
+                : if flex-direction:column : align horizontal using align-items*/
+             flex-direction:column;
+             flex-wrap:wrap;
+             
+             
+        }
+        .box{
+            width:200px;
+            height:100px;
+
+        }
+        .box1{
+            background-color:red;
+        }
+        .box2 {
+            background-color: yellow;
+            /*flex-grow:1;
+            flex-shrink:0;*/
+            /*min-width:250px;*/
+            /*flex-basis:250px;*/
+            /*flex:1 0 220px;*/
+        }
+        .box3 {
+            background-color: blue;
+            /*align-self:center;*/
+        }
+        .box4 {
+            background-color: lightgreen;
+            /*align-self:flex-end;*/
+        }
+    </style>
+</head>
+<body>
+    <section id="mainwrapper">
+        <section class="box box1">one</section>
+        <section class="box box2">two</section>
+        <section class="box box3">three</section>
+        <section class="box box4">four</section>
+    </section>
+</body>
+</html>

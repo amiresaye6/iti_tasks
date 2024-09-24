@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>task 2 Image Drag and Drop</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            height: 80%;
+            border: 2px solid black;
+            box-shadow: inset 0 0 30px 10px tomato;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            background-color: white;
+            border-radius: 20px; /* Added border radius */
+        }
+
+        .top-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            border-bottom: 2px solid #ccc;
+            padding: 10px 0;
+            border-radius: 20px 20px 0 0; /* Added border radius */
+        }
+
+        .bottom-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow: auto;
+            padding: 10px 0;
+            border-radius: 0 0 20px 20px; /* Added border radius */
+            transition: background-color 0.3s ease; /* Smooth background color change */
+        }
+
+        section {
+            width: 100%;
+            height: 90%;
+            border: 2px solid black;
+            padding: 5px;
+            text-align: center;
+            margin: 0 10px;
+            border-radius: 20px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            cursor: grab;
+            border-radius: 10px;
+        }
+
+        img:active {
+            cursor: grabbing;
+        }
+
+        .empty {
+            font-size: 24px;
+            color: #999;
+        }
+
+        .drag-over {
+            background-color: lightgreen;
+        }
+        .finidshed {
+            text-align: center;
+            color: tomato;
+            background-color: lightblue;
+            font-size: 34px;
+            font-weight: 500;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <script>
+        let counter = 9;
+        window.addEventListener('load', function () {
+            const  correctLocationFlagHiThereMrOmar = false;
+            
+            const allimgs = document.images;
+            for (let i = 0; i < allimgs.length; i++) {
+                allimgs[i].addEventListener('dragstart', startdrag);
+                allimgs[i].addEventListener('dragend', enddrag);
+            }
+    
+            const bottom = document.getElementById('bottom');
+            bottom.addEventListener('drop', dropped);
+            bottom.addEventListener('dragenter', enterdrag);
+            bottom.addEventListener('dragover', overdrag);
+        });
+    
+        function startdrag(e) {
+            e.dataTransfer.setData('myimg', e.target.outerHTML);
+            console.log("Start dragging");
+            correctLocationFlagHiThereMrOmar = false;
+            console.log(allimgs.length)
+        }
+    
+        function enddrag(e) {
+            if (correctLocationFlagHiThereMrOmar) {
+                e.preventDefault();
+
+                e.target.style.visibility = "hidden";
+                console.log("End dragging");
+            } else {
+                console.log('wrong place to drop , you dump :<');
+            }
+        }
+    
+        function dropped(e) {
+            e.preventDefault();
+            const bottom = document.getElementById('bottom');
+            const top = document.getElementById('top');
+            const topSection = document.getElementById("topC")
+            const imgHTML = e.dataTransfer.getData('myimg');
+        
+            if (e.target === bottom || bottom.contains(e.target)) {
+                bottom.innerHTML += imgHTML;
+                console.log("Dropped over the container");
+        
+                counter--;
+                console.log(counter);
+        
+                if (counter <= 0) {
+                    top.innerHTML = "Empty, no more images for you :)";
+                    top.style.height = '90%';
+                }
+            } else {
+                console.log("Dropped outside, not moving image");
+            }
+        }
+    
+        function enterdrag(e) {
+            e.preventDefault();
+            console.log("Entered the correct container");
+            const bottom = document.getElementById('bottom');
+            bottom.classList.add('drag-over');
+        }
+    
+        function overdrag(e) {
+            e.preventDefault();
+            correctLocationFlagHiThereMrOmar = true;
+        }
+    
+        function leavedrag(e) {
+            e.preventDefault();
+            console.log("Left the container");
+        }
+    </script>
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-section" id="topC">
+            <section id="top">
+                <img src="../Materials_lab/lecturedemos/UP/1.jpg" draggable="true" />
+                <img src="../Materials_lab/lecturedemos/UP/2.jpg" draggable="true" />
+                <img src="../Materials_lab/lecturedemos/UP/3.jpg" draggable="true" />
+                <img src="../Materials_lab/lecturedemos/UP/4.jpg" draggable="true" />
+                <img src="../Materials_lab/lecturedemos/UP/5.jpg" draggable="true" />
+                <img src="../Materials_lab/lecturedemos/UP/6.jpg" draggable="true" />
+                <img src="../Materials_lab/lecturedemos/UP/7.jpg" draggable="true" />
+                <img src="../Materials_lab/lecturedemos/UP/8.jpg" draggable="true" />
+                <img src="../Materials_lab/lecturedemos/UP/9.jpg" draggable="true" />
+            </section>
+        </div>
+        <div class="bottom-section">
+            <section id="bottom">
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
