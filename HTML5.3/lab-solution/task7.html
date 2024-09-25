@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Task 7 Canvas Square Drawer</title>
+    <title>Task 7 Canvas Line Drawer</title>
     <style>
         html, body {
             height: 100%;
@@ -34,28 +34,34 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let squares = [];
         let drawing = false;
+        let lastX = 0;
+        let lastY = 0;
 
         function getRandomColor() {
             return '#' + Math.floor(Math.random() * 16777215).toString(16);
         }
 
-        function drawSquares() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            squares.forEach(square => {
-                ctx.fillStyle = square.color;
-                ctx.fillRect(square.x - 25, square.y - 25, 50, 50);
-            });
+        function drawLine(x, y) {
+            ctx.strokeStyle = getRandomColor();
+            ctx.lineWidth = 10;
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+
+            lastX = x;
+            lastY = y;
         }
 
         canvas.addEventListener('mousedown', function (event) {
             drawing = true;
             const rect = canvas.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-            squares.push({ x: x, y: y, color: getRandomColor() });
-            drawSquares();
+            lastX = event.clientX - rect.left;
+            lastY = event.clientY - rect.top;
         });
 
         canvas.addEventListener('mouseup', function () {
@@ -63,19 +69,18 @@
         });
 
         canvas.addEventListener('mousemove', function (event) {
-            if (drawing) {
-                const rect = canvas.getBoundingClientRect();
-                const x = event.clientX - rect.left;
-                const y = event.clientY - rect.top;
-                squares.push({ x: x, y: y, color: getRandomColor() });
-                drawSquares();
-            }
+            if (!drawing) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            drawLine(x, y);
         });
 
         window.addEventListener('resize', function () {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            drawSquares();
         });
     </script>
 </body>

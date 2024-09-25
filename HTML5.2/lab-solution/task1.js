@@ -20,7 +20,7 @@ const box = document.getElementById('box');
         changeColor();
 
         function moveBox() {
-            if (isHovered) return; // Prevent moving when hovering on the container
+            if (isHovered) return;
 
             positionX += directionX;
             positionY += directionY;
@@ -55,14 +55,12 @@ const box = document.getElementById('box');
                 moveBox();
                 box.classList.remove('paused');
             }
-            // Remove scaling class when starting movement again
             cont.classList.remove('scale-enabled');
         });
 
         pauseButton.addEventListener('click', () => {
             isMoving = false;
             cancelAnimationFrame(animationFrameId);
-            // Add scaling class when paused
             cont.classList.add('scale-enabled');
         });
 
@@ -75,11 +73,9 @@ const box = document.getElementById('box');
             box.style.top = '0px';
             box.style.backgroundColor = 'red';
             box.classList.remove('paused');
-            // Remove scaling class when stopping
             cont.classList.remove('scale-enabled');
         });
 
-        // Pause movement and animation when hovering on the outer container
         cont.addEventListener('mouseenter', () => {
             isHovered = true;
         });
@@ -87,6 +83,6 @@ const box = document.getElementById('box');
         cont.addEventListener('mouseleave', () => {
             isHovered = false;
             if (isMoving) {
-                moveBox(); // Resume movement after hover ends
+                moveBox();
             }
         });

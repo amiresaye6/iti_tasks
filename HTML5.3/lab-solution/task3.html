@@ -50,6 +50,7 @@
 
             .header button:hover {
                 background-color: darkred;
+                transform: skew(-10deg);
             }
 
             #mymap {
@@ -63,6 +64,16 @@
                 width: 100%;
                 border-collapse: collapse;
                 margin-top: 20px;
+                transition: transform 0.6s ease-in-out;
+            }
+            table:hover {
+                transform: scale(1.1);
+            }
+            table:hover th {
+                font-size: 30px;
+            }
+            table:hover td {
+                font-size: 27px;
             }
 
             th, td {

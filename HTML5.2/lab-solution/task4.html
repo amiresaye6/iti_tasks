@@ -23,7 +23,7 @@
                 <button id="nextBtn">➡️</button>
             </div>
             <div class="branchesContaner" id="branchesContainer">
-                <div class="locationCard">
+                <div class="locationCard" id="mainBranchCard">
                     <img src="location.png" alt="location icon">
                     <h1 class="mainBranch">ITI Smart Village</h1>
                 </div>
@@ -81,13 +81,13 @@
                 </div>
             </div>
             <div class="flags">
-                <div class="redFlag">
+                <div class="redFlag" id="mainB">
                     <div></div>
                     <p>Main Branch</p>
                 </div>
-                <div class="blueFlag">
+                <div class="blueFlag" id="secondaryB">
                     <div></div>
-                    <p>Main Branch</p>
+                    <p>Branch</p>
                 </div>
             </div>
         </div>
@@ -102,36 +102,57 @@
             </div>
             <div class="socialMedia">
                 <h3>Follow Us</h3>
-                <a href="https://facebook.com" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
-                        alt="Facebook" width="30">
-                </a>
-                <a href="https://twitter.com" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter"
-                        width="30">
-                </a>
-                <a href="https://linkedin.com" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-                        alt="LinkedIn" width="30">
-                </a>
+                <div>
+                    <a href="https://facebook.com" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="30">
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter" width="30">
+                    </a>
+                    <a href="https://linkedin.com" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" width="30">
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
-
-
 
     <script>
         const locations = document.querySelectorAll('.locationCard');
         const container = document.getElementById('branchesContainer');
         const nextBtn = document.getElementById('nextBtn');
         const prevBtn = document.getElementById('prevBtn');
-        let startIndex = 0;
+        const mainBrachCheckBox = document.getElementById('mainB');
+        const secondaryBrachCheckBox = document.getElementById('secondaryB');
         const itemsPerPage = 8;
+
+        let mainF = false;
+        let secondF = false;
+        let startIndex = 0;
 
         function showLocations() {
             container.innerHTML = '';
             for (let i = startIndex; i < Math.min(startIndex + itemsPerPage, locations.length); i++) {
                 container.appendChild(locations[i]);
+            }
+        }
+
+        function filterLocations() {
+            if (!mainF && !secondF) {
+                locations.forEach(location => {
+                    location.style.display = 'block';
+                });
+            } else {
+                locations.forEach(location => {
+                    const isMainBranch = location.querySelector('h1').classList.contains('mainBranch');
+                    if (mainF && isMainBranch) {
+                        location.style.display = 'block';
+                    } else if (secondF && !isMainBranch) {
+                        location.style.display = 'block';
+                    } else {
+                        location.style.display = 'none';
+                    }
+                });
             }
         }
 
@@ -147,6 +168,18 @@
                 startIndex -= itemsPerPage;
                 showLocations();
             }
+        });
+
+        mainBrachCheckBox.addEventListener('click', () => {
+            mainF = !mainF;
+            mainBrachCheckBox.classList.toggle('activeOne');
+            filterLocations();
+        });
+
+        secondaryBrachCheckBox.addEventListener('click', () => {
+            secondF = !secondF;
+            secondaryBrachCheckBox.classList.toggle('activeOne');
+            filterLocations();
         });
 
         showLocations();

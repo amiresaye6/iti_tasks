@@ -69,8 +69,8 @@
             transform: rotate(360deg);
             background-color: yellowgreen;
         }
-
-        .button.active {
+        
+        .active {
             background-color: rgb(130, 72, 0);
             transform: scale(1.1);
         }
@@ -132,10 +132,14 @@
     <script>
         const buttons = document.querySelectorAll('.button');
         let currentIndex = 0;
-
+        
         function showVideo(videoNumber) {
             const videoPlayer = document.getElementById('videoPlayer');
             const videoSource = document.getElementById('videoSource');
+            buttons.forEach(btn => {
+                btn.classList.remove('active')
+            })
+            buttons[videoNumber - 1].classList.add('active')
             videoSource.src = `../Materials_lab/lecturedemos/Video/universe.mp4`;
             /*videoSource.src = `video${videoNumber}.mp4`; */
             console.log(`video number : ${videoNumber} is playeing`);
