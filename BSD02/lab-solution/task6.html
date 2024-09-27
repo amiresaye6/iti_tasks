@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>Enhanced Horizontal Accordion</title>
+    <style>
+        .accordion.width {
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            display: flex;
+        }
+
+        .accordion.width .card {
+            flex-direction: row;
+            flex-grow: 0;
+            flex-shrink: 1;
+            min-width: min-content;
+        }
+
+        .accordion.width .card .card-header {
+            cursor: pointer;
+            transform: rotate(180deg);
+            writing-mode: vertical-rl;
+            white-space: nowrap;
+            transition: background-color 0.3s;
+        }
+
+        .accordion.width .card .card-header:hover {
+            background-color: #f8f9fa;
+        }
+
+        .accordion.width .card .card-header:not(.collapsed) {
+            pointer-events: none;
+            background-color: #e2e6ea;
+        }
+
+        .collapsing.width {
+            transition: width 0.35s ease;
+            height: auto;
+            width: 0;
+        }
+
+        .accordion .card-body {
+            overflow: hidden;
+        }
+
+        .card-body img {
+            width: 100px;
+        }
+
+        .shadow-red {
+            filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.5));
+        }
+
+        .shadow-green {
+            filter: drop-shadow(0 0 30px rgba(0, 255, 0, 0.5));
+        }
+
+        .shadow-blue {
+            filter: drop-shadow(0 0 30px rgba(0, 0, 255, 0.5));
+        }
+
+        .shadow-yellow {
+            filter: drop-shadow(0 0 30px rgba(255, 255, 0, 0.5));
+        }
+
+        .shadow-purple {
+            filter: drop-shadow(0 0 30px rgba(128, 0, 128, 0.5));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="accordion width" id="accordionHorizontalExample">
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Collapsible Group Item 1
+            </div>
+            <div id="collapseOne" class="collapse show width" data-parent="#accordionHorizontalExample">
+                <div class="card-body">
+                    <img class="shadow-red" src="../../BSD0/lab-solution/amongus.png" alt="Image for Card 1">
+                    This is content for the first card.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Collapsible Group Item 2
+            </div>
+            <div id="collapseTwo" class="collapse width" data-parent="#accordionHorizontalExample">
+                <div class="card-body">
+                    <img class="shadow-green" src="../../BSD0/lab-solution/amongus.png" alt="Image for Card 2">
+                    This is content for the second card.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Collapsible Group Item 3
+            </div>
+            <div id="collapseThree" class="collapse width" data-parent="#accordionHorizontalExample">
+                <div class="card-body">
+                    <img class="shadow-blue" src="../../BSD0/lab-solution/amongus.png" alt="Image for Card 3">
+                    This is content for the third card.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Collapsible Group Item 4
+            </div>
+            <div id="collapseFour" class="collapse width" data-parent="#accordionHorizontalExample">
+                <div class="card-body">
+                    <img class="shadow-yellow" src="../../BSD0/lab-solution/amongus.png" alt="Image for Card 4">
+                    This is content for the fourth card.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                Collapsible Group Item 5
+            </div>
+            <div id="collapseFive" class="collapse width" data-parent="#accordionHorizontalExample">
+                <div class="card-body">
+                    <img class="shadow-purple" src="../../BSD0/lab-solution/amongus.png" alt="Image for Card 5">
+                    This is content for the fifth card.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.card-header').on('click', function() {
+                var target = $(this).data('target');
+
+                if ($(target).hasClass('show')) {
+                    $(target).collapse('hide');
+                } else {
+                    $(target).collapse('show');
+                }
+            });
+
+            var horizontalAccordions = $(".accordion.width");
+
+            horizontalAccordions.each(function () {
+                var accordion = $(this);
+                var collapse = accordion.find(".collapse");
+                var bodies = collapse.find("> *");
+                accordion.height(accordion.height());
+                bodies.width(bodies.eq(0).width());
+                collapse.not(".show").each(function () {
+                    $(this).parent().find("[data-toggle='collapse']").addClass("collapsed");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

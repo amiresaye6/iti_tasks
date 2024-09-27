@@ -1,0 +1,219 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+$primary-color: #aed9e0;
+$secondary-color: #ffebb2;
+$button-color: #86b3d1;
+$select-bg: #f6f9fc;
+$select-hover: #dee4e7;
+$select-border: #86b3d1;
+$font-size: 18px;
+$padding: 15px;
+$p1-fontsize: 28px;
+$p2-fontsize: 18px;
+
+%button-styles {
+    background-color: $button-color;
+    color: white;
+    border: none;
+    padding: $padding;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($button-color, 10%);
+    }
+}
+
+@mixin card-style($bg-color, $border-radius: 10px) {
+    background-color: $bg-color;
+    padding: $padding;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    background-color: $primary-color;
+    padding: $padding 50px;
+    border-radius: 10px;
+    text-align: start;
+
+    h1 {
+        font-size: 32px;
+        color: #333;
+    }
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $padding;
+    padding: $padding;
+    background-color: #f8f8f8;
+
+    .text-section {
+        h1 {
+            height: 50px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 50px;
+            background-color: lightpink;
+            border-radius: 5px;
+        }
+
+        p {
+            background-color: #faf3dd;
+            padding: $padding;
+            border-radius: 10px;
+            font-size: $p1-fontsize;
+            color: #444;
+        }
+
+        .action-buttons {
+            margin-top: $padding;
+
+            button,
+            a,
+            input {
+                @extend %button-styles;
+            }
+
+            a {
+                background-color: $secondary-color;
+                text-decoration: none;
+                color: #333;
+
+                &:hover {
+                    background-color: darken($secondary-color, 10%);
+                }
+            }
+        }
+    }
+
+    .image-section {
+        @include flex-center;
+
+        img {
+            max-width: 400px;
+            min-width: 300px;
+            filter: drop-shadow(0 0 30px lightgreen);
+        }
+    }
+}
+
+select {
+    min-width: 50%;
+    padding: $padding;
+    font-size: $font-size;
+    color: #444;
+    background-color: $select-bg;
+    border: 2px solid $select-border;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+        background-color: $select-hover;
+        border-color: lighten($select-border, 15%);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    option {
+        padding: $padding;
+        font-size: $font-size;
+        color: #555;
+        background-color: white;
+    }
+}
+
+.info-sections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $padding;
+    padding: $padding;
+
+    .info-card {
+        @include card-style(white);
+        margin-bottom: $padding;
+
+        .icon {
+            font-size: 35px;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: #333;
+        }
+
+        .badge.new {
+            background-color: $secondary-color;
+            padding: 5px;
+            margin-left: 5px;
+            color: #333;
+            border-radius: 5px;
+        }
+
+        .badge.count {
+            background-color: $primary-color;
+            color: white;
+            border-radius: 10px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        p {
+            font-size: $p2-fontsize;
+            color: #444;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .image-section img {
+        display: none;
+    }
+
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .image-section {
+        margin-top: $padding;
+    }
+
+    .text-section {
+        width: 100%;
+    }
+
+    .info-sections {
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+}
