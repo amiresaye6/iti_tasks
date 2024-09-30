@@ -1,0 +1,19 @@
+1-Try All Lecture Demo
+2-create react Application
+//inside SRC
+//create folder Data ===>data
+//class for Employees (id,Name,Age,Salary,CourseList)
+//Array Of Employees
+//create Folder Component 
+//Crud Opertion At Empoyees (function )===>Class
+//As Class
+//Display Employees 
+        each row (Delete,Edit BTn)
+        //table header (Sorting By Salary)
+        //input button Filter for Empoyess by Age 
+//AddComponent ===>add new Empoyee
+//Edit Component 
+
+//CourseList Class and Array ==============>Same As Employees
+//CourseList Class (id,COursName,Duration,startDate,EndDate,TeachingInstrList)
+//Same Crud operation and Components list Employees

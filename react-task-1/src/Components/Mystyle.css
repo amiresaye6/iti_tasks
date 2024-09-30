@@ -1,0 +1,13 @@
+p,div {
+    border: 2px solid green;
+    text-align: center;
+    background-color: antiquewhite;
+    color: aqua;
+    padding: 5px;
+}
+img{
+    border: 3px solid rebeccapurple;
+    border-radius: 75%;
+    width: 350px;
+    height: 250px;
+}
