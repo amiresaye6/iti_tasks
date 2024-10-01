@@ -2,10 +2,10 @@ import React from 'react';
 
 export function TableRow(props) {
     return (
-        <tr key={props.course.Id}>
-            <td>{props.course.Id}</td>
+        <tr key={props.course.id}>
+            <td>{props.course.id}</td>
             <td>
-                {props.editingCourseId === props.course.Id ? (
+                {props.editingCourseId === props.course.id ? (
                     <input
                         type="text"
                         name="CourseName"
@@ -18,7 +18,7 @@ export function TableRow(props) {
                 )}
             </td>
             <td>
-                {props.editingCourseId === props.course.Id ? (
+                {props.editingCourseId === props.course.id ? (
                     <input
                         type="text"
                         name="Duration"
@@ -31,7 +31,7 @@ export function TableRow(props) {
                 )}
             </td>
             <td>
-                {props.editingCourseId === props.course.Id ? (
+                {props.editingCourseId === props.course.id ? (
                     <input
                         type="date"
                         name="StartDate"
@@ -44,7 +44,7 @@ export function TableRow(props) {
                 )}
             </td>
             <td>
-                {props.editingCourseId === props.course.Id ? (
+                {props.editingCourseId === props.course.id ? (
                     <input
                         type="date"
                         name="EndDate"
@@ -57,14 +57,37 @@ export function TableRow(props) {
                 )}
             </td>
             <td>
-                {props.editingCourseId === props.course.Id ? (
+                {props.editingCourseId === props.course.id ? (
+                    <input
+                        type="text"
+                        name="TeachingInstrList"
+                        value={props.editFormData.TeachingInstrList.join(', ')}
+                        onChange={props.handleInputChange}
+                        required
+                    />
+                ) : (
+                    <div>
+                        {Array.isArray(props.course.TeachingInstrList) && props.course.TeachingInstrList.length > 0 ? (
+                            props.course.TeachingInstrList.map((emp, index) => (
+                                <span key={index} className="badge bg-secondary mx-1" style={{ fontSize: '0.9em' }}>
+                                    {emp}
+                                </span>
+                            ))
+                        ) : (
+                            <span>No employees assigned</span>
+                        )}
+                    </div>
+                )}
+            </td>
+            <td>
+                {props.editingCourseId === props.course.id ? (
                     <button className="btn btn-success btn-sm" onClick={props.handleUpdateSubmit}>
                         Save
                     </button>
                 ) : (
                     <>
                         <button className="btn btn-warning btn-sm mx-1" onClick={() => props.handleEditClick(props.course)}>Edit</button>
-                        <button className="btn btn-danger btn-sm" onClick={() => props.handleDelete(props.course.Id)}>Delete</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => props.handleDelete(props.course.id)}>Delete</button>
                     </>
                 )}
             </td>

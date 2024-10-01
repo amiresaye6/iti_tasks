@@ -1,57 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import CourseManager from './CourseManager';
+// import CourseManager from './CourseManager';
 import { TableRow } from './TableCourseRow';
+import CourseManagerAPI from './CourseManagerLocalServer';
+import { Link } from 'react-router-dom';
 
 const CourseTable = () => {
-    const courseManager = new CourseManager();
+    const courseManager = new CourseManagerAPI();
     const [courses, setCourses] = useState([]);
     const [editingCourseId, setEditingCourseId] = useState(null);
     const [editFormData, setEditFormData] = useState({});
-    const [newCourseData, setNewCourseData] = useState({
-        Id: '',
-        CourseName: '',
-        Duration: '',
-        StartDate: '',
-        EndDate: ''
-    });
-    
-    // State for sorting
-    const [sortCriteria, setSortCriteria] = useState('none'); // 'start' or 'end'
-    
-    // State for filtering by duration
-    const [durationFilter, setDurationFilter] = useState('');
 
-    const fetchCourses = () => {
-        setCourses(courseManager.getCourses());
-    };
-
-    useEffect(() => {
-        fetchCourses();
-
-        const handleStorageChange = () => {
-            if (localStorage.getItem("loadCondition") === "true") {
-                fetchCourses();
-            }
-        };
-
-        window.addEventListener("storage", handleStorageChange);
-
-        return () => {
-            window.removeEventListener("storage", handleStorageChange);
-        };
-    }, []);
-
-    const handleDelete = (id) => {
-        const res = prompt("Type 'sure' if you want to continue.");
-        if (res === 'sure') {
-            courseManager.removeCourse(id);
-            fetchCourses();
+    const fetchCourses = async () => {
+        try {
+            const fetcheCourse = await courseManager.getCourses();
+            setCourses(fetcheCourse);
+        } catch (error) {
+            console.error('Error fetching courses:', error);
         }
     };
 
-    const handleEditClick = (course) => {
-        setEditingCourseId(course.Id);
-        setEditFormData(course);
+    const [sortCriteria, setSortCriteria] = useState('none');
+    const [durationFilter, setDurationFilter] = useState('');
+
+
+    useEffect(() => {
+        fetchCourses();
+    }, []);
+
+    const handleDelete = async (id) => {
+        const res = prompt("Type 'sure' if you want to continue.");
+        if (res === 'sure') {
+            try {
+                await courseManager.removeCourse(id);
+                console.log(id)
+                fetchCourses();
+            } catch (error) {
+                console.error('Error deleting courses:', error);
+            }
+        }
+    };
+
+    const handleEditClick = (data) => {
+        setEditingCourseId(data.id);
+        // console.log(data.id)
+        // console.log(data)
+        setEditFormData(data);
     };
 
     const handleInputChange = (e) => {
@@ -62,35 +55,14 @@ const CourseTable = () => {
         }));
     };
 
-    const handleUpdateSubmit = (e) => {
+    const handleUpdateSubmit = async (e) => {
         e.preventDefault();
-        courseManager.updateCourse(editingCourseId, editFormData);
-        setEditingCourseId(null);
-        fetchCourses();
-    };
-
-    const handleNewInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewCourseData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
-
-    const handleAddCourse = (e) => {
-        e.preventDefault();
-        if (newCourseData.CourseName && newCourseData.Duration && newCourseData.StartDate && newCourseData.EndDate) {
-            courseManager.addCourse(newCourseData); // Add course using CourseManager
+        try {
+            await courseManager.updateCourse(editingCourseId, editFormData);
+            setEditingCourseId(null);
             fetchCourses();
-            setNewCourseData({
-                Id: '',
-                CourseName: '',
-                Duration: '',
-                StartDate: '',
-                EndDate: ''
-            }); // Reset the form
-        } else {
-            alert("Please fill all fields.");
+        } catch (error) {
+            console.error('Error updating department:', error);
         }
     };
 
@@ -104,27 +76,28 @@ const CourseTable = () => {
         return sortedCourses;
     };
 
-    // Get sorted courses based on current sort criteria
+ 
     const sortedCourses = sortCriteria === 'none' ? courses : sortCourses(sortCriteria);
 
     // Filter courses by duration (smaller than or equal to durationFilter)
     const filteredCourses = sortedCourses.filter(course => {
-        const courseDuration = parseFloat(course.Duration); // Convert course duration to number
-        const filterDuration = parseFloat(durationFilter); // Convert filter duration to number
-        return durationFilter ? courseDuration <= filterDuration : true; // Check if course duration is less than or equal to filter duration
+        const courseDuration = parseFloat(course.Duration);
+        const filterDuration = parseFloat(durationFilter);
+        return durationFilter ? courseDuration <= filterDuration : true;
     });
 
     return (
         <div className="container mt-4">
             <h2 className="mb-4">Course List</h2>
+            <Link className='btn btn-success' to='/courses/add'>add</Link>
 
             {/* Filter by Duration */}
             <div className="mb-3">
-                <input 
-                    type="text" 
-                    placeholder="Filter by Duration (<=)" 
-                    value={durationFilter} 
-                    onChange={(e) => setDurationFilter(e.target.value)} 
+                <input
+                    type="text"
+                    placeholder="Filter by Duration (<=)"
+                    value={durationFilter}
+                    onChange={(e) => setDurationFilter(e.target.value)}
                     className="form-control"
                 />
             </div>
@@ -144,13 +117,14 @@ const CourseTable = () => {
                         <th>Duration</th>
                         <th>Start Date</th>
                         <th>End Date</th>
+                        <th>Teaching Instructors</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {filteredCourses.map(course => (
                         <TableRow
-                            key={course.Id}
+                            key={course.id}
                             course={course}
                             editingCourseId={editingCourseId}
                             editFormData={editFormData}

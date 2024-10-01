@@ -48,28 +48,28 @@ export function TableRow(props) {
                 )}
             </td>
             <td>
-    {props.editingDeptId === props.dept.Id ? (
-        <input
-            type="text"
-            name="EmpList"
-            value={props.editFormData.EmpList.join(', ')}
-            onChange={props.handleInputChange}
-            required
-        />
-    ) : (
-        <div>
-            {Array.isArray(props.dept.EmpList) && props.dept.EmpList.length > 0 ? (
-                props.dept.EmpList.map((emp, index) => (
-                    <span key={index} className="badge bg-secondary mx-1" style={{ fontSize: '0.9em' }}>
-                        {emp}
-                    </span>
-                ))
-            ) : (
-                <span>No employees assigned</span>
-            )}
-        </div>
-    )}
-</td>
+                {props.editingDeptId === props.dept.Id ? (
+                    <input
+                        type="text"
+                        name="EmpList"
+                        value={props.editFormData.EmpList.join(', ')}
+                        onChange={props.handleInputChange}
+                        required
+                    />
+                ) : (
+                    <div>
+                        {Array.isArray(props.dept.EmpList) && props.dept.EmpList.length > 0 ? (
+                            props.dept.EmpList.map((emp, index) => (
+                                <span key={index} className="badge bg-secondary mx-1" style={{ fontSize: '0.9em' }}>
+                                    {emp}
+                                </span>
+                            ))
+                        ) : (
+                            <span>No employees assigned</span>
+                        )}
+                    </div>
+                )}
+            </td>
 
             <td>
                 {props.editingDeptId === props.dept.id ? (

@@ -21,6 +21,12 @@ function NavBar() {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/depts">Departments</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/login">LogIn</Link>
+                            </li>
+                            <li className="nav-item">
+                                <button className="nav-link" onClick={ () => sessionStorage.removeItem("loggedIn")}>LogOut</button>
+                            </li>
                         </ul>
                     </div>
                 </div>

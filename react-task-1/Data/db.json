@@ -3,26 +3,9 @@
     {
       "id": "34c0",
       "Id": "3",
-      "Name": "amir alsayed abdulsamea",
+      "Name": "Web Development",
       "Location": "sharquia",
-      "Branches": [
-        "sharquia"
-      ],
-      "EmpList": [
-        "amir",
-        "mohamed",
-        "hossam",
-        "updallah"
-      ]
-    },
-    {
-      "id": "305b",
-      "Id": "dadf",
-      "Name": "amir alsayed abdulsamea",
-      "Location": "test location  f",
-      "Branches": [
-        "sharquia"
-      ],
+      "Branches": "zagazig, manzura",
       "EmpList": [
         "amir",
         "mohamed",
@@ -33,11 +16,9 @@
     {
       "id": "83d6",
       "Id": "789",
-      "Name": "Mohamed Salah",
-      "Location": "alexandria",
-      "Branches": [
-        "mansura"
-      ],
+      "Name": "BackEnd Development",
+      "Location": "Alexandria",
+      "Branches": "Mansura, Zagazig",
       "EmpList": [
         "hossam",
         "updallah"
@@ -47,7 +28,7 @@
       "id": "0a9a",
       "Id": "852963",
       "Name": "adel shakal",
-      "Location": "alexandria",
+      "Location": "Alexandria",
       "Branches": [
         "Alex"
       ],
@@ -59,6 +40,68 @@
       ]
     }
   ],
-  "employees": [],
-  "classesList": []
+  "employees": [
+    {
+      "id": "c0f8",
+      "Id": "53",
+      "Name": "Adel Shakal Bahgat Saber",
+      "Age": "53",
+      "Salary": "11",
+      "CourseList": [
+        "260d",
+        "7000",
+        "0bb7"
+      ]
+    },
+    {
+      "id": "7b80",
+      "Id": "22222",
+      "Name": "Amir Alsayed Abdulsamea",
+      "Age": "22",
+      "Salary": "8500000",
+      "CourseList": [
+        "260d",
+        "0bb7"
+      ]
+    }
+  ],
+  "classesList": [
+    {
+      "id": "260d",
+      "Id": "2",
+      "CourseName": "Maths",
+      "Duration": "30",
+      "StartDate": "2024-10-11",
+      "EndDate": "2024-10-21",
+      "TeachingInstrList": [
+        "adelshakal",
+        "bahgatsaber",
+        "waelghonem"
+      ]
+    },
+    {
+      "id": "7000",
+      "Id": "1",
+      "CourseName": "Angular",
+      "Duration": "30",
+      "StartDate": "2024-10-04",
+      "EndDate": "2024-10-23",
+      "TeachingInstrList": [
+        "study hard",
+        "do your tasks"
+      ]
+    },
+    {
+      "id": "0bb7",
+      "Id": "1",
+      "CourseName": "React",
+      "Duration": "60",
+      "StartDate": "2024-11-01",
+      "EndDate": "2024-10-23",
+      "TeachingInstrList": [
+        "study hard",
+        "do your tasks"
+      ]
+    }
+  ]
 }

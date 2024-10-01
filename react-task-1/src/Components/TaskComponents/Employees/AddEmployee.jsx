@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import EmployeeManager from './EmployeeManager';
-import CourseManager from '../Courses/CourseManager';
+import EmployeeManagerAPI from './EmployeeManagerLocalServer';
+import CourseManagerAPI from '../Courses/CourseManagerLocalServer';
 import Employees from '../../Data/Employees';
+import { Link } from 'react-router-dom';
 
 const AddEmployee = ({ onEmployeeAdded }) => {
-    const employeeManager = new EmployeeManager();
-    const courseManager = new CourseManager();
+    const employeeManager = new EmployeeManagerAPI();
+    const courseManager = new CourseManagerAPI();
 
     const [formData, setFormData] = useState({
-        Id: '',
+        id: '',  // Changed to lowercase 'id' to match your server field
         Name: '',
         Age: '',
         Salary: '',
@@ -16,9 +17,21 @@ const AddEmployee = ({ onEmployeeAdded }) => {
     });
 
     const [courses, setCourses] = useState([]);
+    const [loadingCourses, setLoadingCourses] = useState(true);  // For handling loading state
 
+    // Fetch courses from the server asynchronously
     useEffect(() => {
-        setCourses(courseManager.getCourses());
+        const fetchCourses = async () => {
+            try {
+                const coursesFromServer = await courseManager.getCourses();
+                setCourses(coursesFromServer);
+            } catch (error) {
+                console.error('Error fetching courses:', error);
+            } finally {
+                setLoadingCourses(false);  // Set loading state to false after fetch
+            }
+        };
+        fetchCourses();
     }, []);
 
     const handleInputChange = (e) => {
@@ -40,20 +53,24 @@ const AddEmployee = ({ onEmployeeAdded }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Submitting:", formData);
 
-        employeeManager.addEmployee(new Employees(
-            formData.Id,
-            formData.Name,
-            formData.Age,
-            formData.Salary,
-            formData.CourseList
-        ));
-
-        onEmployeeAdded();
-        setFormData({ Id: '', Name: '', Age: '', Salary: '', CourseList: [] });
+        // Submit employee data to the server asynchronously
+        try {
+            await employeeManager.addEmployee(new Employees(
+                formData.id,  // Changed to match your JSON server schema
+                formData.Name,
+                formData.Age,
+                formData.Salary,
+                formData.CourseList
+            ));
+            onEmployeeAdded();  // Trigger callback after successful submission
+            setFormData({ id: '', Name: '', Age: '', Salary: '', CourseList: [] });  // Reset form
+        } catch (error) {
+            console.error('Error adding employee:', error);
+        }
     };
 
     return (
@@ -64,9 +81,9 @@ const AddEmployee = ({ onEmployeeAdded }) => {
                     <label>ID</label>
                     <input
                         type="text"
-                        name="Id"
+                        name="id"  // Changed to lowercase 'id' to match server field
                         className="form-control"
-                        value={formData.Id}
+                        value={formData.id}
                         onChange={handleInputChange}
                         required
                     />
@@ -110,15 +127,22 @@ const AddEmployee = ({ onEmployeeAdded }) => {
                         multiple
                         className="form-control"
                         onChange={handleCourseChange}
+                        disabled={loadingCourses}  // Disable if courses are still loading
                     >
-                        {courses.map((course) => (
-                            <option key={course.Id} value={course.Id}>
-                                {course.CourseName}
-                            </option>
-                        ))}
+                        {loadingCourses ? (
+                            <option>Loading courses...</option>
+                        ) : (
+                            courses.map((course) => (
+                                <option key={course.id} value={course.id}>  {/* Adjusted id key */}
+                                    {course.CourseName}
+                                </option>
+                            ))
+                        )}
                     </select>
                 </div>
                 <button type="submit" className="btn btn-primary">Add Employee</button>
+                <Link className='btn btn-success' to='/employees'>Go back</Link>
+
             </form>
         </div>
     );

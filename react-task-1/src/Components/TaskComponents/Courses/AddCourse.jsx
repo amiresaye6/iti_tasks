@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import CourseManager from './CourseManager';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CourseManagerAPI from './CourseManagerLocalServer';
+import { Link } from 'react-router-dom';
 
 const AddCourse = ({ onCourseAdded }) => {
-    const courseManager = new CourseManager();
+    const courseManager = new CourseManagerAPI();
     const [formData, setFormData] = useState({
         Id: '',
         CourseName: '',
@@ -15,27 +16,39 @@ const AddCourse = ({ onCourseAdded }) => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+        if (name === 'TeachingInstrList') {
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value.split(',').map(item => item.trim()),
+            }));
+        } else {
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
+        }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Submitting:", formData);
 
-        courseManager.addCourse({
-            Id: formData.Id,
-            CourseName: formData.CourseName,
-            Duration: formData.Duration,
-            StartDate: formData.StartDate,
-            EndDate: formData.EndDate,
-            TeachingInstrList: formData.TeachingInstrList,
-        });
+        try {
+            await courseManager.addCourse(
+                {
+                    Id: formData.Id,
+                    CourseName: formData.CourseName,
+                    Duration: formData.Duration,
+                    StartDate: formData.StartDate,
+                    EndDate: formData.EndDate,
+                    TeachingInstrList: formData.TeachingInstrList,
+                }
+            )
+        } catch (error) {
+            console.error('Error adding course:', error);
+        }
 
         onCourseAdded();
-        setFormData({ Id: '', CourseName: '', Duration: '', StartDate: '', EndDate: '', TeachingInstrList: [] });
+        // setFormData({ Id: '', CourseName: '', Duration: '', StartDate: '', EndDate: '', TeachingInstrList: [] });
     };
 
     return (
@@ -101,8 +114,19 @@ const AddCourse = ({ onCourseAdded }) => {
                             required
                         />
                     </div>
+                    <div className="col">
+                        <input
+                            type="text"
+                            name="TeachingInstrList"
+                            placeholder="TeachingInstrList (comma separated)"
+                            value={formData.TeachingInstrList.join(', ')} // Join array for input display
+                            onChange={handleInputChange}
+                            className="form-control"
+                        />
+                    </div>
                 </div>
                 <button type="submit" className="btn btn-primary">Add Course</button>
+                <Link className='btn btn-success' to='/courses'>Go back</Link>
             </form>
         </div>
     );

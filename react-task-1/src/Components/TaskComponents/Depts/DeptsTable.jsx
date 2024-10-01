@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DeptsManager from './DeptsManager';
 import { TableRow } from './DeptTableRow';
+import { Link } from 'react-router-dom';
 
 const DeptsTable = () => {
     const deptsManager = new DeptsManager();
@@ -65,6 +66,7 @@ const DeptsTable = () => {
     return (
         <div className="container mt-4">
             <h2 className="mb-4">Department List</h2>
+            <Link className='btn btn-success' to='/depts/add'>add</Link>
 
             <table className="table table-bordered">
                 <thead>
@@ -73,6 +75,7 @@ const DeptsTable = () => {
                         <th>Name</th>
                         <th>Location</th>
                         <th>Branches</th>
+                        <th>Employees List</th>
                         <th>Actions</th>
                     </tr>
                 </thead>

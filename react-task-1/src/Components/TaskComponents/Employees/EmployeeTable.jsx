@@ -1,62 +1,113 @@
 import React, { useEffect, useState } from 'react';
-import EmployeeManager from './EmployeeManager';
-import CourseManager from '../Courses/CourseManager';
+import EmployeeManagerAPI from './EmployeeManagerLocalServer';
+import CourseManagerAPI from '../Courses/CourseManagerLocalServer';
+import { Link } from 'react-router-dom';
 
 const EmployeeTable = () => {
-    const employeeManager = new EmployeeManager();
-    const courseManager = new CourseManager();
+    const employeeManager = new EmployeeManagerAPI();
+    const courseManager = new CourseManagerAPI();
     const [employees, setEmployees] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [editingEmployeeId, setEditingEmployeeId] = useState(null);
-    const [editFormData, setEditFormData] = useState({});
+    const [editFormData, setEditFormData] = useState({
+        CourseList: [], // Default to an empty array
+    });
     const [ageFilter, setAgeFilter] = useState('');
     const [sortBySalary, setSortBySalary] = useState(false);
 
+    const fetchEmployees = async () => {
+        try {
+            const employeeData = await employeeManager.getEmployees();
+            setEmployees(employeeData);
+        } catch (error) {
+            console.error('Error fetching employees:', error);
+        }
+    };
+
+    const fetchCourses = async () => {
+        try {
+            const courseData = await courseManager.getCourses();
+            setCourses(courseData);
+        } catch (error) {
+            console.error('Error fetching courses:', error);
+        }
+    };
     useEffect(() => {
-        setEmployees(employeeManager.getEmployees());
+
+        fetchEmployees();
+        fetchCourses();
     }, []);
 
-
-const filteredEmployees = employees.filter(employee => {
-    if (ageFilter) {
-        console.log(employee.Age, ageFilter);
-        return employee.Age <= Number(ageFilter);
-    }
-    return true;
-});
-
+    const filteredEmployees = employees.filter(employee => {
+        if (ageFilter) {
+            return employee.Age <= Number(ageFilter);
+        }
+        return true;
+    });
 
     const sortedEmployees = sortBySalary
         ? filteredEmployees.sort((a, b) => b.Salary - a.Salary)
         : filteredEmployees;
 
-    const handleDelete = (id) => {
-        employeeManager.deleteEmployee(id);
-        setEmployees(employeeManager.getEmployees());
+    // const handleDelete = async (id) => {
+    //     try {
+
+    //         await employeeManager.deleteEmployee(id);
+    //         setEmployees(employees.filter(employee => employee.id !== id));
+
+    //     } catch (error) {
+    //         console.error('Error deleting employee:', error);
+    //     }
+    // };
+    const handleDelete = async (id) => {
+        const res = prompt("Type 'sure' if you want to continue.");
+        if (res === 'sure') {
+            try {
+                await employeeManager.deleteEmployee(id);
+                setEmployees(employees.filter(employee => employee.id !== id));
+                console.log(id)
+                fetchEmployees();
+            } catch (error) {
+                console.error('Error deleting employee:', error);
+            }
+        }
     };
 
+
     const handleEditClick = (employee) => {
-        setEditingEmployeeId(employee.Id);
-        setEditFormData(employee);
+        setEditingEmployeeId(employee.id);
+        setEditFormData({
+            ...employee,
+            CourseList: Array.isArray(employee.CourseList) ? employee.CourseList : [],
+        });
     };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEditFormData((prevData) => ({
             ...prevData,
-            [name]: value,
+            [name]: name === 'CourseList' ? value.split(',').map(item => item.trim()) : value,
         }));
     };
 
-    const handleUpdateSubmit = (e) => {
+    const handleUpdateSubmit = async (e) => {
         e.preventDefault();
-        employeeManager.updateEmployee(editingEmployeeId, editFormData);
-        setEditingEmployeeId(null);
-        setEmployees(employeeManager.getEmployees());
+        try {
+            await employeeManager.updateEmployee(editingEmployeeId, editFormData);
+            setEmployees((prevEmployees) =>
+                prevEmployees.map(employee =>
+                    employee.id === editingEmployeeId ? editFormData : employee
+                )
+            );
+            setEditingEmployeeId(null);
+        } catch (error) {
+            console.error('Error updating employee:', error);
+        }
     };
 
     const getCourseNames = (courseIds) => {
         return courseIds.map(id => {
-            const course = courseManager.getCourses().find(course => course.Id === id);
+            const course = courses.find(course => course.id === id);
             return course ? course.CourseName : 'Unknown Course';
         }).join(', ');
     };
@@ -64,6 +115,7 @@ const filteredEmployees = employees.filter(employee => {
     return (
         <div className="container mt-4">
             <h2 className="mb-4">Employee List</h2>
+            <Link className='btn btn-success' to='/employees/add'>Add</Link>
 
             {/* Age Filter Input */}
             <div className="mb-3">
@@ -101,10 +153,10 @@ const filteredEmployees = employees.filter(employee => {
                 </thead>
                 <tbody>
                     {sortedEmployees.map(employee => (
-                        <tr key={employee.Id}>
-                            <td>{employee.Id}</td>
+                        <tr key={employee.id}>
+                            <td>{employee.id}</td>
                             <td>
-                                {editingEmployeeId === employee.Id ? (
+                                {editingEmployeeId === employee.id ? (
                                     <input
                                         type="text"
                                         name="Name"
@@ -117,7 +169,7 @@ const filteredEmployees = employees.filter(employee => {
                                 )}
                             </td>
                             <td>
-                                {editingEmployeeId === employee.Id ? (
+                                {editingEmployeeId === employee.id ? (
                                     <input
                                         type="number"
                                         name="Age"
@@ -130,7 +182,7 @@ const filteredEmployees = employees.filter(employee => {
                                 )}
                             </td>
                             <td>
-                                {editingEmployeeId === employee.Id ? (
+                                {editingEmployeeId === employee.id ? (
                                     <input
                                         type="number"
                                         name="Salary"
@@ -143,17 +195,37 @@ const filteredEmployees = employees.filter(employee => {
                                 )}
                             </td>
                             <td>
-                                {getCourseNames(employee.CourseList)}
+                                {editingEmployeeId === employee.id ? (
+                                    <input
+                                        type="text"
+                                        name="CourseList"
+                                        value={Array.isArray(editFormData.CourseList) ? editFormData.CourseList.join(', ') : ''} // Safeguard for .join()
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                ) : (
+                                    <div>
+                                        {Array.isArray(employee.CourseList) && employee.CourseList.length > 0 ? (
+                                            employee.CourseList.map((courseId, index) => (
+                                                <span key={index} className="badge bg-secondary mx-1" style={{ fontSize: '0.9em' }}>
+                                                    {getCourseNames([courseId])}
+                                                </span>
+                                            ))
+                                        ) : (
+                                            <span>No courses assigned</span>
+                                        )}
+                                    </div>
+                                )}
                             </td>
                             <td>
-                                {editingEmployeeId === employee.Id ? (
+                                {editingEmployeeId === employee.id ? (
                                     <button className="btn btn-success btn-sm" onClick={handleUpdateSubmit}>
                                         Save
                                     </button>
                                 ) : (
                                     <>
                                         <button className="btn btn-warning btn-sm mx-1" onClick={() => handleEditClick(employee)}>Edit</button>
-                                        <button className="btn btn-danger btn-sm" onClick={() => handleDelete(employee.Id)}>Delete</button>
+                                        <button className="btn btn-danger btn-sm" onClick={() => handleDelete(employee.id)}>Delete</button>
                                     </>
                                 )}
                             </td>

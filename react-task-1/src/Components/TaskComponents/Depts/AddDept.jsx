@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DeptsManager from './DeptsManager';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 const AddDept = ({ onDeptAdded }) => {
     const deptsManager = new DeptsManager();
@@ -112,6 +113,8 @@ const AddDept = ({ onDeptAdded }) => {
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary">Add Department</button>
+                <Link className='btn btn-success' to='/depts'>Go back</Link>
+
             </form>
         </div>
     );
