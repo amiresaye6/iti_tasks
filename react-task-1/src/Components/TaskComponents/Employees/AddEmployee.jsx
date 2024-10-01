@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import EmployeeManager from './EmployeeManager';
-import CourseManager from './CourseManager'; // Assuming you have this manager already
-import Employees from '../Data/Employees';
+import CourseManager from '../Courses/CourseManager';
+import Employees from '../../Data/Employees';
 
 const AddEmployee = ({ onEmployeeAdded }) => {
     const employeeManager = new EmployeeManager();
@@ -18,7 +18,7 @@ const AddEmployee = ({ onEmployeeAdded }) => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        setCourses(courseManager.getCourses()); // Load courses from local storage
+        setCourses(courseManager.getCourses());
     }, []);
 
     const handleInputChange = (e) => {
@@ -42,7 +42,7 @@ const AddEmployee = ({ onEmployeeAdded }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submitting:", formData); // Debugging output
+        console.log("Submitting:", formData);
 
         employeeManager.addEmployee(new Employees(
             formData.Id,
@@ -52,8 +52,7 @@ const AddEmployee = ({ onEmployeeAdded }) => {
             formData.CourseList
         ));
 
-        onEmployeeAdded(); // Call the callback to notify the parent component
-        // Reset the form data
+        onEmployeeAdded();
         setFormData({ Id: '', Name: '', Age: '', Salary: '', CourseList: [] });
     };
 

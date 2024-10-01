@@ -1,10 +1,10 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import CoursesPage from './TaskPages/CoursesPage';
 import { Route, Routes } from 'react-router-dom';
 import EmployeesPage from './TaskPages/EmployeesPage';
 import NavBar from './TaskComponents/NavBar';
 import HomePage from './TaskPages/HomePage';
+import DeptsPage from './TaskPages/DeptsPage';
 
 const AmirApp = () => {
 
@@ -17,6 +17,7 @@ const AmirApp = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/courses" element={<CoursesPage />} />
+                <Route path="/depts" element={<DeptsPage />} />
                 <Route path="/employees" element={<EmployeesPage />} />
             </Routes>
         </div>

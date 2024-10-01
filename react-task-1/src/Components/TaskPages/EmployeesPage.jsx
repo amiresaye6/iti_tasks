@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import AddEmployee from '../TaskComponents/AddEmployee'
-import EmployeeTable from '../TaskComponents/EmployeeTable'
+import AddEmployee from '../TaskComponents/Employees/AddEmployee'
+import EmployeeTable from '../TaskComponents/Employees/EmployeeTable'
 
 function EmployeesPage() {
     const [employeeRefresh, setEmployeeRefresh] = useState(false);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import EmployeeManager from './EmployeeManager';
-import CourseManager from './CourseManager';
+import CourseManager from '../Courses/CourseManager';
 
 const EmployeeTable = () => {
     const employeeManager = new EmployeeManager();
@@ -15,31 +15,28 @@ const EmployeeTable = () => {
         setEmployees(employeeManager.getEmployees());
     }, []);
 
-    // Filter employees by age
-// Filter employees by age (younger than the specified age)
+
 const filteredEmployees = employees.filter(employee => {
-    // If ageFilter is provided, filter by age
     if (ageFilter) {
-        console.log(employee.Age, ageFilter); // Debugging output
-        return employee.Age <= Number(ageFilter); // Change to "<" for younger than
+        console.log(employee.Age, ageFilter);
+        return employee.Age <= Number(ageFilter);
     }
-    return true; // No filter applied
+    return true;
 });
 
 
-    // Sort filtered employees by salary if the checkbox is checked
     const sortedEmployees = sortBySalary
         ? filteredEmployees.sort((a, b) => b.Salary - a.Salary)
         : filteredEmployees;
 
     const handleDelete = (id) => {
         employeeManager.deleteEmployee(id);
-        setEmployees(employeeManager.getEmployees()); // Refresh the employee list
+        setEmployees(employeeManager.getEmployees());
     };
 
     const handleEditClick = (employee) => {
         setEditingEmployeeId(employee.Id);
-        setEditFormData(employee); // Pre-fill the form with the employee data
+        setEditFormData(employee);
     };
 
     const handleInputChange = (e) => {
@@ -52,16 +49,16 @@ const filteredEmployees = employees.filter(employee => {
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault();
-        employeeManager.updateEmployee(editingEmployeeId, editFormData); // Add an update method in EmployeeManager
-        setEditingEmployeeId(null); // Exit edit mode
-        setEmployees(employeeManager.getEmployees()); // Refresh the employee list
+        employeeManager.updateEmployee(editingEmployeeId, editFormData);
+        setEditingEmployeeId(null);
+        setEmployees(employeeManager.getEmployees());
     };
 
     const getCourseNames = (courseIds) => {
         return courseIds.map(id => {
             const course = courseManager.getCourses().find(course => course.Id === id);
             return course ? course.CourseName : 'Unknown Course';
-        }).join(', '); // Return course names as a comma-separated string
+        }).join(', ');
     };
 
     return (

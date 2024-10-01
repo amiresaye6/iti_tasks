@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import AddCourse from '../TaskComponents/AddCourse';
-import CourseTable from '../TaskComponents/CourseTable';
+import AddCourse from '../TaskComponents/Courses/AddCourse';
+import CourseTable from '../TaskComponents/Courses/CourseTable';
 
 function CoursesPage() {
     const [courseRefresh, setCourseRefresh] = useState(false);

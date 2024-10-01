@@ -1,0 +1,64 @@
+{
+  "depts": [
+    {
+      "id": "34c0",
+      "Id": "3",
+      "Name": "amir alsayed abdulsamea",
+      "Location": "sharquia",
+      "Branches": [
+        "sharquia"
+      ],
+      "EmpList": [
+        "amir",
+        "mohamed",
+        "hossam",
+        "updallah"
+      ]
+    },
+    {
+      "id": "305b",
+      "Id": "dadf",
+      "Name": "amir alsayed abdulsamea",
+      "Location": "test location  f",
+      "Branches": [
+        "sharquia"
+      ],
+      "EmpList": [
+        "amir",
+        "mohamed",
+        "hossam",
+        "updallah"
+      ]
+    },
+    {
+      "id": "83d6",
+      "Id": "789",
+      "Name": "Mohamed Salah",
+      "Location": "alexandria",
+      "Branches": [
+        "mansura"
+      ],
+      "EmpList": [
+        "hossam",
+        "updallah"
+      ]
+    },
+    {
+      "id": "0a9a",
+      "Id": "852963",
+      "Name": "adel shakal",
+      "Location": "alexandria",
+      "Branches": [
+        "Alex"
+      ],
+      "EmpList": [
+        "shakal",
+        "ade",
+        "bahgat",
+        "wael"
+      ]
+    }
+  ],
+  "employees": [],
+  "classesList": []
+}

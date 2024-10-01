@@ -1,0 +1,16 @@
+//previous Lab ============>totally to class component with Routing
+//search nested Routing 
+//Class for =============>Employees
+//(Array of List for depts(id,Name,Location,branchs,EmpList))
+
+
+
+//Panel for (coursList)==========>inside Employees Home
+//Panel for EmployeesList===========>Depts
+//Autherized(which emp can see Panel)
+//view ====>crud of CourseList
+=================================To JSon Server 
+==============================using EndPoint (fetch ||axios)(
+    Get,Post(Adding),Put(Edit),Delete()=======>for All Array(Employees,Depts,CoursLists)
+)
+//////////////////Hooks ========>Employees

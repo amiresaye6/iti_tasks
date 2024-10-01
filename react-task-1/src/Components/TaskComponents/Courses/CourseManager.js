@@ -7,17 +7,17 @@ class CourseManager {
         try {
             const storedCourses = localStorage.getItem('courses');
             const parsedCourses = storedCourses ? JSON.parse(storedCourses) : [];
-            console.log("Loaded courses:", parsedCourses); // Debugging output
+            // console.log("Loaded courses:", parsedCourses);
             return parsedCourses;
         } catch (error) {
             console.error('Error loading courses from localStorage:', error);
-            return []; // Return an empty array if there was an error
+            return [];
         }
     }
 
     saveCourses() {
         try {
-            console.log("Saving courses:", this.courses); // Debugging output
+            console.log("Saving courses:", this.courses);
             localStorage.setItem('courses', JSON.stringify(this.courses));
         } catch (error) {
             console.error('Error saving courses to localStorage:', error);
@@ -27,13 +27,13 @@ class CourseManager {
     addCourse(course) {
         if (!course.Id) {
             console.error('Course must have an ID.');
-            return; // Prevent adding courses without an ID
+            return;
         }
-        // Check for duplicate ID before adding
+
         const exists = this.courses.some(existingCourse => existingCourse.Id === course.Id);
         if (exists) {
             console.error(`Course with ID ${course.Id} already exists.`);
-            return; // Prevent adding duplicate courses
+            return;
         }
         this.courses.push(course);
         this.saveCourses();
